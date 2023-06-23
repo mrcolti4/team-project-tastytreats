@@ -1,0 +1,44 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.section {
+  padding-top: 100px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  background: none;
+  padding: 14px 28px;
+  border: 1px solid #9BB537;
+  border-radius: 15px;
+  color: #050505;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.btn-dr-theme {
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #9BB537;
+  color: #fff;
+  transition: all .3s;
+}
