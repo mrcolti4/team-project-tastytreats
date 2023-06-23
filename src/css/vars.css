@@ -9,4 +9,8 @@
     --dark-th-text-color-03: rgba(255, 255, 255, 0.30);
     --light-text-color: #F8F8F8;
     --switch-color :#CECDCD;
+
+    /* Змінні для recipe таблиці */
+    --ident: 16px;
+    --items: 3;
 }

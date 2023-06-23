@@ -1,0 +1,12 @@
+.container-recipe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.search-recipe-right {
+    width: 235px;
+}
+.search-recipe-left {
+    width: 782px;
+}
