@@ -7,12 +7,10 @@
 
 .search-recipe-right {
     width: 100%;
-    outline: 1px solid var(--main-color);
 }
 
 .search-recipe-left {
     width: 100%;
-    outline: 1px solid red;
 }
 
 @media screen and (max-width: 768px) {
