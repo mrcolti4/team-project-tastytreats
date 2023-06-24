@@ -1,0 +1,33 @@
+.all-categories-btn {
+  margin-bottom: 30px;
+}
+
+.all-categiries-list-container {
+  width: 235px;
+  height: 416px;
+  background-color: skyblue;
+  overflow: scroll;
+}
+
+.all-categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.all-categories-item {
+}
+
+.all-categories-item-btn {
+  border: none;
+  background: none;
+  color: var(--primary-text-color-03);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.all-categories-item-btn:hover,
+.all-categories-item-btn:focus {
+  color: var(--main-color);
+}
