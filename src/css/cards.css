@@ -1,0 +1,18 @@
+.projects__title{
+    margin: 0;
+    color:var(--light-text-color);
+    width: 140px;
+    height: 18px;
+    top: 166px;
+    left: 16px;
+
+}
+.projects__description{
+    margin: 0;
+    color: var(--light-text-color);
+    width: 218px;
+    height: 32px;
+    top: 192px;
+    left: 16px;
+
+}
