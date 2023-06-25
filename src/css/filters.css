@@ -4,16 +4,12 @@
   gap: 14px;
   flex-direction: row;
   flex-wrap: wrap;
-
-  /* border-radius: 2px;
-  border: 1px solid rgba(12, 59, 245, 0.893); */
 }
 .filtr-search {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
   width: 335px;
   display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .input-box {
   position: relative;
@@ -21,16 +17,13 @@
 .svg-serch {
   position: absolute;
   left: 18px;
-
+  top: 50%;
   transform: translateY(-50%);
 }
 .input-form {
-  display: flex;
-  width: 335px;
+  width: 100%;
   height: 46px;
-  padding: 14px 122px 14px 18px;
-  align-items: flex-start;
-  gap: 32px;
+  padding: 14px 122px 14px 48px;
   border-radius: 15px;
   border: 1px solid rgba(5, 5, 5, 0.2);
 }
