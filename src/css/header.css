@@ -1,0 +1,106 @@
+.link {
+  text-decoration: none;
+}
+/* ---------------------------------------------- */
+.logo-header {
+  color: var(--main-color);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.64px;
+}
+
+.logo-color {
+  color: var(--primary-text-color);
+}
+
+.nav-link {
+  color: var(--primary-text-color);
+  font-size: 12px;
+  font-family: Inter;
+  font-weight: 500;
+
+  /* line-height: 1.1666; */
+  /* letter-spacing: 0.03em; */
+  /* text-transform: uppercase; */
+}
+/* .nav-link.home {
+  margin-right: 16px;
+} */
+
+.nav-link.current {
+  color: var(--main-color);
+}
+
+.nav-header {
+  display: flex;
+  align-items: center;
+
+  /* justify-content: space-between; */
+
+  padding-top: 25px;
+}
+
+.shopping-link {
+  margin-left: auto;
+}
+
+.header-menu-btn {
+  padding: 0;
+  border: none;
+  color: black;
+}
+
+.header-menu-icon {
+  color: currentColor;
+  width: 32px;
+  height: 32px;
+}
+
+/* -----Бургер мобилка----- */
+
+/* ---------------Медиа запросы--------------- */
+@media screen and (max-width: 768px) {
+  .nav-list {
+    display: none;
+  }
+  .theme-switche {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logo-header {
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.72px;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+
+    margin-right: 203px;
+
+    gap: 16;
+  }
+
+  .swich-link {
+    margin-left: 14px;
+  }
+
+  .header-menu-btn {
+    display: none;
+
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .nav-list {
+    margin-right: 391px;
+  }
+}
+
+/* ------------------------------------------ */
