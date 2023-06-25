@@ -1,5 +1,5 @@
 .all-categories-btn {
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   font-size: 18px;
   color: var(--primary-text-color-05);
   border-color: var(--primary-text-color-02);
@@ -44,6 +44,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .all-categories-btn {
+    margin-bottom: 30px;
+  }
+
   .all-categiries-list-container {
     width: 176px;
     height: 416px;
@@ -56,6 +60,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .all-categories-btn {
+    margin-bottom: 30px;
+  }
+
   .all-categiries-list-container {
     width: 235px;
     height: 416px;
