@@ -8,15 +8,16 @@
     opacity: 1;
     background: rgba(0, 0, 0, 0.2);
     transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
     visibility: hidden;
     opacity: 0;
-    z-index: 20; 
+    z-index: 20;
 }
-     backdrop.active {
-        visibility: visible;
-        opacity: 1; 
-     } 
+
+backdrop.active {
+    visibility: visible;
+    opacity: 1;
+}
 
 
 .modal {
@@ -24,28 +25,33 @@
     max-height: calc(100vh - 20px);
     background-color: white;
     padding: 40px 20px;
-    position: relative;
-    /* visibility: hidden; 
+    /*position: relative;*/
+    position: absolute;
+    top: calc(50% - 365px);
+    right: calc(50% - 335px);
+    display: none;
+    /* visibility: hidden;
     opacity: 0;
     z-index: 30;  */
-    
+
 }
-      .modal.active {
-        visibility: visible;
-        opacity: 1;
-    }
+
+.modal.active {
+    visibility: visible;
+    opacity: 1;
+}
 
 
 .modal-close-btn {
- position: absolute; 
- top: 8px;
- right: 8px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
     background-color: transparent;
     border: none;
-     padding: 0; 
-     display: flex;
+    padding: 0;
+    display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     cursor: pointer;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -87,15 +93,15 @@
 .buttons-add {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 }
 
 .recipes-title {
     font-weight: 600;
     font-size: 18px;
     line-height: 1.15;
-    margin-bottom: 20px;
     text-transform: uppercase;
+    margin-bottom: 16px;
 }
 
 .cooking-recipes {
@@ -113,6 +119,16 @@
     font-size: 14px;
     line-height: 1.4;
     color: var(--primary-text-color);
+    align-items: baseline;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--switch-color);
+    padding-bottom: 6px;
+        padding-top: 14px;
+}
+
+.recipes-subtitle__rating {
+    border: none;
 }
 
 .recipes-inf {
@@ -120,16 +136,6 @@
     font-size: 12px;
     line-height: 1.33;
     color: var(--switch-color);
-
-}
-
-.recipes-list {
-    display: flex;
-    align-items: baseline;
-justify-content: space-between;
-padding-bottom: 6px;
-padding-top: 14px;
-border-bottom: 1px solid var(--switch-color);
 
 }
 
@@ -183,7 +189,7 @@ border-bottom: 1px solid var(--switch-color);
     align-items: baseline;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 768px) {
     .modal {
         width: 685px;
     }
