@@ -15,8 +15,8 @@ input.addEventListener('input', turnOnOffCross);
 clinInput.addEventListener('click', clickCross);
 
 function turnOnOffCross() {
-  console.log(input.value.trim().length > 0);
-  if (input.value.trim().length > 0) {
+
+  if (!(input.value.trim().length === 0)) {
     clinInput.classList.add('active');
     return;
   }
@@ -25,5 +25,6 @@ function turnOnOffCross() {
 
 function clickCross() {
   input.value = '';
+  clinInput.classList.remove('active');
 }
 
