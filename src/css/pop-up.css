@@ -27,6 +27,7 @@
     background-color: white;
     padding: 40px 20px;
     position: relative;
+    display: none;
     /* visibility: hidden; 
     opacity: 0;
     z-index: 30;  */
