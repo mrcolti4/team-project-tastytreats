@@ -20,8 +20,6 @@
 
 
 .modal {
-    top: 50%;
-    left: 50%;
     width: 335px;
     max-height: calc(100vh - 20px);
     background-color: white;
