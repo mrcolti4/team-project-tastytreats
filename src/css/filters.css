@@ -33,15 +33,16 @@
   fill: rgba(155, 181, 55, 1);
 }
 .svg-serch-clous {
-  display: none;
-}
-.svg-serch-clous-active {
-  stroke: rgba(5, 5, 5, 0.8);
+  stroke: transparent;
   position: absolute;
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
 }
+.svg-serch-clous.active {
+  stroke: rgba(5, 5, 5, 0.8);
+}
+
 .input-form {
   width: 100%;
   height: 46px;
