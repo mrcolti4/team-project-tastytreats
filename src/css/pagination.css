@@ -1,0 +1,26 @@
+.tui-pagination {
+    height: 40px;
+    margin: 14px 0 12px;
+    line-height: normal;
+    text-align: center;
+    font-size: 0;
+}
+
+.tui-pagination .tui-page-btn {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    padding: 14px 0 0px;
+    margin-left: 0;
+    margin-right: 16px;
+    color: #9BB537;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1;
+    text-decoration: none;
+    vertical-align: middle;
+    border-radius: 50%;
+    border: 1px solid #9BB537;
+}
+
