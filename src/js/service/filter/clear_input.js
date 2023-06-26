@@ -22,4 +22,5 @@ function turnOnOffCross() {
 
 function clickCross() {
   input.value = '';
+  clinInput.classList.remove('active');
 }
