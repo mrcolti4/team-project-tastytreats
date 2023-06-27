@@ -2,6 +2,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
+  background-color: var(--bgc-background);
 }
 
 .container {
@@ -29,7 +30,12 @@ body {
   padding-top: 100px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
@@ -80,7 +86,7 @@ ul {
 .btn-outline-grey {
   color: var(--primary-text-color-05);
   border: 1px solid rgba(5, 5, 5, 0.2);
-  font-size: 18px;  
+  font-size: 18px;
 }
 
 .btn-outline-grey:hover {

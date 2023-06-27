@@ -1,0 +1,18 @@
+:root {
+  --main-color: #1f2e35;
+  --secodary-color: #ffffff;
+  --shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  --primary-text-color: #050505;
+
+  --bgc-background: #f8f8f8;
+}
+
+.toggler-control {
+  filter: invert(0);
+}
+.toggler-control:checked {
+  filter: invert(1);
+}
+.toggler-status {
+  filter: invert(0);
+}
