@@ -1,5 +1,5 @@
 <div class="backdrop backdrop--hidden">
-<div class="modal container">
+<div id="modal" class="modal container">
   <button type="button" class="modal-close-btn">
     <svg class="icon-close" width="20" height="20">
       <use href="./images/sprite.svg#icon-close"></use>
@@ -11,7 +11,7 @@
       <img class="recipes" src="./images/poster.jpg" alt="video-recipes" />
     </div>
     <div class="recipes-information">
-      <h2 class="recipes-title">banana pancakes</h2>
+      <h2 id="modal-title" class="recipes-title"></h2>
       <div>
         <ul class="all-rating">
 <li class="recipes-subtitle__rating"><span class="rating">4.5</span></li>
@@ -58,7 +58,7 @@
     syrup, sliced bananas, or whipped cream.
   </p>
   <div class="buttons-add">
-    <button type="button" class="btn-add">Add to favorite</button>
+    <button type="button" id="btn-add" class="btn-add">Add to favorite</button>
     <button type="button" class="btn-add">Give a rating</button>
   </div>
 </div>
