@@ -57,6 +57,7 @@ input[type='checkbox'] {
   height: 0;
   width: 0;
   visibility: hidden;
+  display: none;
 }
 label {
   cursor: pointer;
@@ -121,8 +122,11 @@ label:active:after {
   left: 0;
   width: 100vw;
   height: 100vh;
-  padding: 32px;
-  background-color: #3f51b5;
+  /* padding: 32px; */
+  padding: 0;
+  padding-top: 200px;
+
+  background-color: var(--main-color);
   z-index: 999;
 
   transform: translateX(100%);
@@ -135,20 +139,28 @@ label:active:after {
   position: absolute;
   top: 16px;
   right: 16px;
-  color: #fff;
+  color: #ffffff;
 }
 .mobile-menu {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-.mobile-menu .link {
+.mobile-menu .nav-link {
   display: block;
-  padding: 10px;
-  color: #fff;
+  padding: 0 50px 16px 50px;
+
+  color: #ffffff;
   text-decoration: none;
+
+  text-align: center;
 }
-/* ------------------------------------------ */
+/* --my-css--- */
+.theme-switcher-burger {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
 /* ----- МЕДИА ЗАПРОСЫ ----- */
 @media screen and (max-width: 767px) {
   .nav-list {
