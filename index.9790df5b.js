@@ -1,0 +1,2 @@
+const e=document.querySelector(".js-input"),t=document.querySelector(".js-clin-input"),c=document.querySelector(".js-icon-serch");e.addEventListener("focus",()=>{c.classList.add("active")}),e.addEventListener("blur",()=>{c.classList.remove("active")}),e.addEventListener("input",function(){if(e.value.trim().length>0){t.classList.add("active");return}t.classList.remove("active")}),t.addEventListener("click",function(){e.value="",t.classList.remove("active")});
+//# sourceMappingURL=index.9790df5b.js.map
