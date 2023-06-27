@@ -1,0 +1,56 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+/* ==========================================
+Single-colored icons can be modified like so:
+.icon-name {
+  font-size: 32px;
+  color: red;
+}
+========================================== */
+
+.icon-menu {
+  width: 0.9697265625em;
+}
+
+.icon-shopping-cart {
+  width: 0.9599609375em;
+}
+
+.icon-menu-light {
+  width: 0.9697265625em;
+}
+
+.icon-menu-dark {
+  width: 0.9697265625em;
+}
+
+.icon-shopping-cart-light {
+  width: 0.9599609375em;
+}
+
+.icon-shopping-cart-dark {
+  width: 0.9599609375em;
+}
+
+.icon-switch-green {
+  width: 1.490234375em;
+}
+
+.icon-switch-grey {
+  width: 1.548828125em;
+}
+
+.icon-switch-oval-green {
+  width: 1.51953125em;
+}
+
+.icon-switch-oval-grey {
+  width: 1.51953125em;
+}

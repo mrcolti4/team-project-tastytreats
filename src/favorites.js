@@ -1,4 +1,6 @@
 import './js/localctorage';
+import './js/header-script';
+import './js/header-mobile-menu';
 import axios from 'axios';
 
 const categoriesList = document.querySelector('.category-button-list');
@@ -63,4 +65,3 @@ function getRecipeById(_id) {
 // getRecipeById('6462a8f74c3d0ddd28897fc1')
 //   .then(console.log(getRecipeById('6462a8f74c3d0ddd28897fc1')))
 //   .catch(console.log('errr'));
-
