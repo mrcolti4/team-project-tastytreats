@@ -1,35 +1,24 @@
 
-// /** Відкриття та закриття модального вікна з конкретною назвою p.*/
+// /** Відкриття та закриття модального вікна */
+$(document).ready(function () {
+  $(".modal-close-btn").each(function () {
 
- $(document).ready(function() {
-    $(".btn-popup").click(function() {
-      // Отримуємо текст з елементу, на який натиснули
-      var title = $(this).text();
-      $(".modal").css("display", "block");
-      $(".backdrop").css("visibility", "visible");
-      $("#modal-title").text(title);
-    });
-    $(".modal-close-btn").click(function() {
+    $(this).click(function () {
       $(".modal").css("display", "none");
       $(".backdrop").css("visibility", "hidden");
     });
   });
+  $(".cards__btn").each(function () {
+    $(this).click(function () {
+      $(".modal").css("display", "block");
+      $(".backdrop").css("visibility", "visible");
+    });
+  });
+});
 
-// $(document).ready(function () {
-//   $(".modal-close-btn").each(function () {
 
-//     $(this).click(function () {
-//       $(".modal").css("display", "none");
-//       $(".backdrop").css("visibility", "hidden");
-//     });
-//   });
-//   $(".btn-popup").each(function () {
-//     $(this).click(function () {
-//       $(".modal").css("display", "block");
-//       $(".backdrop").css("visibility", "visible");
-//     });
-//   });
-// });
+
+
 
 
 /** CКРОЛ */
@@ -47,7 +36,7 @@ Array.from(recipeElements).forEach((element) => {
   }
 });
 
-const recipeCook = document.getElementsByClassName('rcooking-recipes');
+const recipeCook = document.getElementsByClassName('cooking-recipes');
 
 Array.from(recipeCook).forEach((element) => {
   const elementHeightRec = element.scrollHeight;
@@ -59,5 +48,7 @@ Array.from(recipeCook).forEach((element) => {
     
   }
 });
+
+
 
 
