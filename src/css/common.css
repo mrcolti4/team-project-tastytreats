@@ -59,20 +59,39 @@ ul {
 .btn {
   background: none;
   padding: 14px 28px;
-  border: 1px solid var(--main-color);
   border-radius: 15px;
-  color: var(--primary-text-color);
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-}
-
-.btn-dr-theme {
-  color: var(--light-text-color);
+  border: 1px solid var(--main-color);
 }
 
 .btn:hover {
   background-color: var(--main-color);
   color: var(--light-text-color);
-  transition: all .3s;
+  border: 1px solid var(--main-color);
+  transition: all 0.3s;
+}
+
+.btn-outline {
+  color: var(--primary-text-color);
+}
+
+.btn-outline-grey {
+  color: var(--primary-text-color-05);
+  border: 1px solid rgba(5, 5, 5, 0.2);
+  font-size: 18px;  
+}
+
+.btn-outline-grey:hover {
+  color: var(--light-text-color);
+}
+
+.btn-primary {
+  background-color: var(--main-color);
+  color: var(--light-text-color);
+}
+
+.btn-primary:hover {
+  color: var(--primary-text-color);
 }
