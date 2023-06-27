@@ -1,3 +1,5 @@
+/* 
+
 .backdrop {
     position: fixed;
     top: 0;
@@ -17,22 +19,45 @@
 backdrop.active {
     visibility: visible;
     opacity: 1;
+} */
+
+
+.backdrop {
+    position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                z-index: 1;
+                overflow: hidden;
+                visibility: visible;
+                opacity: 1;
+            background: rgba(0, 0, 0, 0.2);
+            transition: opacity 500ms ease, visibility 500ms ease;
 }
+   
+    .backdrop.active {
+        visibility: visible;
+        opacity: 1;
+    }
 
 
 .modal {
     width: 335px;
-    max-height: calc(100vh - 20px);
+   max-height: 681px;
     background-color: white;
     padding: 40px 20px;
-    /*position: relative;*/
-    position: absolute;
-    top: calc(50% - 365px);
-    right: calc(50% - 335px);
-    display: none;
-    /* visibility: hidden;
-    opacity: 0;
-    z-index: 30;  */
+    border-radius: 15px;
+    /* position: relative; */
+     position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+    /* display: none; */
+     /* visibility: hidden;
+    opacity: 0; */
+    /* z-index: 30;  
+    position: fixed; */
 
 }
 
@@ -40,7 +65,10 @@ backdrop.active {
     visibility: visible;
     opacity: 1;
 }
-
+/* .scroll-text {
+    overflow-y: auto;
+    white-space: nowrap;
+} */
 
 .modal-close-btn {
     position: absolute;
@@ -104,6 +132,10 @@ backdrop.active {
     margin-bottom: 16px;
 }
 
+/* .text-cook {
+    height: 161px;
+} */
+
 .cooking-recipes {
     font-weight: 400;
     font-size: 14px;
@@ -111,6 +143,7 @@ backdrop.active {
     margin-bottom: 40px;
     margin-top: 26px;
     width: 295px;
+    height: 162px;
 }
 
 
@@ -145,7 +178,7 @@ backdrop.active {
 
 
 .recipes-container {
-    padding-bottom: 20px;
+     height: 224px;
 }
 
 
@@ -187,6 +220,7 @@ backdrop.active {
 .all-rating {
     display: flex;
     align-items: baseline;
+    margin-bottom: 18px;
 }
 
 @media screen and (min-width: 768px) {
@@ -211,8 +245,8 @@ backdrop.active {
     }
     .recipes {
         width: 332px;
-        height: 300px;
         margin-right: 34px;
+        height: 300px;
      
     }
     .modal {
