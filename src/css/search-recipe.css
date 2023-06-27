@@ -1,11 +1,11 @@
 .container-recipe {
     display: flex;
     justify-content: space-between;
-    align-items: center;    
     flex-direction: column;
 }
 
 .search-recipe-right {
+    padding-top: 26px;
     width: 100%;
 }
 

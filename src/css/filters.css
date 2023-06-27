@@ -1,3 +1,6 @@
+.filters {
+  margin-bottom: 32px;
+}
 .filter-box {
   width: 375px;
   display: flex;
