@@ -1,45 +1,38 @@
 const refs = {
     light: document.querySelector("[rel='stylesheet'][media*='prefers-color-scheme'][media*='light']"),
     dark: document.querySelector("[rel='stylesheet'][media*='prefers-color-scheme'][media*='dark']"),
-    btnCollection: document.querySelector('.switcher-input'),
+    btnCollection: document.querySelectorAll('.switcher-input'),
     inputLabel: document.querySelector('.input-label'),
 }
-
-refs.inputLabel.addEventListener('click', () => {
-    console.log(refs.btnCollection.checked);
-})
-console.log(refs.btnCollection.checked);
-console.log(111);
 
 setupSwitcher()
 setUpScheme();
 
 function setupSwitcher() {
     const savedScheme = getSavedScheme();
-    // const systemScheme = getSystemScheme(); автоматичне отримання теми користувача matchMedia() // true || false
 
     if (savedScheme !== null) {
-        refs.btnCollection.checked = savedScheme === 'light' ? false : true;
-        // const checkedRadio = document.querySelector(`.switcher-input[value=${savedScheme}]`);
-        // checkedRadio.checked = true;
+        // refs.btnCollection.checked = savedScheme === 'light' ? false : true;
+        refs.btnCollection.forEach((btn) => {
+            btn.checked = savedScheme === 'light' ? false : true;
+        })
     }
-    console.log(2);
-    refs.btnCollection.addEventListener('change', (e) => {
-        // setScheme(btnCollection.checked);
-        let setValue = refs.btnCollection.checked === false ? 'light' : 'dark';
-        setScheme(setValue);
-        saveScheme(setValue);
+
+    refs.btnCollection.forEach((btn) => {
+        btn.addEventListener('change', (e) => {
+            let setValue = btn.checked === false ? 'light' : 'dark';
+            setScheme(setValue);
+            saveScheme(setValue);
+
+            refs.btnCollection.forEach((btnSet) => {
+                btnSet.checked = btn.checked;
+            })
+        })
     })
 }
 
-
-
 function setUpScheme() {
     let savedScheme = getSavedScheme();
-    // if (!savedScheme) {
-    //     setScheme('auto');
-    //     return;
-    // }
     setScheme(savedScheme)
 
 }
@@ -69,4 +62,3 @@ function setScheme(value) {
 
 }
 
-console.log('end');
