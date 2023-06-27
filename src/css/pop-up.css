@@ -1,0 +1,239 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+    transition: visibility 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 20; 
+}
+     backdrop.active {
+        visibility: visible;
+        opacity: 1; 
+     } 
+
+
+.modal {
+    top: 50%;
+    left: 50%;
+    width: 335px;
+    max-height: calc(100vh - 20px);
+    background-color: white;
+    padding: 40px 20px;
+    position: relative;
+    display: none;
+    /* visibility: hidden; 
+    opacity: 0;
+    z-index: 30;  */
+    
+}
+      .modal.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+.modal-close-btn {
+ position: absolute; 
+ top: 8px;
+ right: 8px;
+    background-color: transparent;
+    border: none;
+     padding: 0; 
+     display: flex;
+    align-items: center;
+    justify-content: center; 
+    cursor: pointer;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-close {
+    display: inline-block;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+
+}
+
+
+    .icon-close:hover,
+    .icon-close:focus {
+        fill: var(--main-color);
+        stroke: var(--main-color);
+    }
+
+.btn-add {
+    width: 133px;
+    height: 41px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.33;
+    border: 1px solid var(--main-color);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);}
+
+    .btn-add:hover,
+    .btn-add:focus {
+        background-color: var(--main-color);
+        color: #fff;
+        border: 1px solid var(--main-color);
+    }
+
+
+.buttons-add {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.recipes-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.cooking-recipes {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.66;
+    margin-bottom: 40px;
+    margin-top: 26px;
+    width: 295px;
+}
+
+
+.recipes-subtitle {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--primary-text-color);
+}
+
+.recipes-inf {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--switch-color);
+
+}
+
+.recipes-list {
+    display: flex;
+    align-items: baseline;
+justify-content: space-between;
+padding-bottom: 6px;
+padding-top: 14px;
+border-bottom: 1px solid var(--switch-color);
+
+}
+
+.table-border {
+    border-bottom: 1px solid var(--switch-color);
+}
+
+
+.recipes-container {
+    padding-bottom: 20px;
+}
+
+
+.rating {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--switch-color);
+    padding-right: 40px;
+
+
+}
+
+.recipes-poster {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.poster {
+    width: 240px;
+    height: 357px;
+    border-radius: 5px;
+}
+
+.hashtags-list {
+    display: flex;
+    gap: 8px;
+}
+.hashtags {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    border: 1px solid var(--switch-color);
+    border-radius: 35px;
+    padding: 8px 16px ;
+    cursor: pointer;
+}
+
+.all-rating {
+    display: flex;
+    align-items: baseline;
+}
+
+@media screen and (min-width: 1200px) {
+    .modal {
+        width: 685px;
+    }
+    .btn-add {
+    width: 156px;
+    height: 45px;
+    }
+    .cooking-recipes {
+        width: 621px;
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+    .modal-recipes-info {
+        display: flex;
+        
+    }
+    .recipes-information {
+        width: 238px;
+    }
+    .recipes {
+        width: 332px;
+        height: 300px;
+        margin-right: 34px;
+     
+    }
+    .modal {
+        padding: 32px 32px;
+    }
+}
+
+.youtube__btn {
+    position: absolute;
+    font-size: 70px;
+    top: 50%;
+    left: 50%;
+    color: white;
+    background: 0 0;
+    border: none;
+    transform: translate(-50%, -50%);
+}
+
+.background-image {
+    height: 35px;
+    width: 30px;
+    background: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
