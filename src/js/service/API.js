@@ -4,7 +4,6 @@ export const fetchCategories = async () => {
       'https://tasty-treats-backend.p.goit.global/api/categories'
     );
     const dataDetails = await response.json();
-
     const categories = dataDetails.map(category => category.name);
 
     return categories;

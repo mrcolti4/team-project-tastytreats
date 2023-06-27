@@ -1,4 +1,4 @@
-const ratings = document.querySelectorAll('.rating');
+let ratings;
 let ratingActive, ratingValue;
 
 function initRating(rating) {
@@ -14,13 +14,10 @@ function initValues(rating) {
   ratingValue = rating.querySelector('.rating__value');
 }
 
-function markUpRating() {
+export function markUpRating() {
+  ratings = document.querySelectorAll('.rating');
   ratings.forEach(item => {
     const rating = item;
     initRating(rating);
   });
-}
-
-if (ratings.length > 0) {
-  markUpRating();
 }
