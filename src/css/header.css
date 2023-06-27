@@ -53,13 +53,13 @@
 }
 /* ------------------------------------------ */
 /* ---TOGGLE SWITCH--- */
-input[type='checkbox'] {
+.switcher-input[type='checkbox'] {
   height: 0;
   width: 0;
   visibility: hidden;
   display: none;
 }
-label {
+.input-label {
   cursor: pointer;
   text-indent: -9999px;
   width: 46px;
@@ -69,7 +69,7 @@ label {
   border-radius: 18px;
   position: relative;
 }
-label:after {
+.input-label:after {
   content: '';
   position: absolute;
   top: 1px;
@@ -80,14 +80,14 @@ label:after {
   border-radius: 18px;
   transition: 0.3s;
 }
-input:checked + label {
+.switcher-input:checked + .input-label {
   background: #9bb537;
 }
-input:checked + label:after {
+.switcher-input:checked + .input-label:after {
   left: calc(100% - 1px);
   transform: translateX(-100%);
 }
-label:active:after {
+.input-label:active:after {
   width: 26px;
 }
 /* ------------------------------------------ */
@@ -156,7 +156,7 @@ label:active:after {
   text-align: center;
 }
 /* --my-css--- */
-.theme-switcher-burger {
+.theme-switcher.burger {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -166,7 +166,7 @@ label:active:after {
   .nav-list {
     display: none;
   }
-  .theme-switcher {
+  .theme-switcher.main {
     display: none;
   }
 }
