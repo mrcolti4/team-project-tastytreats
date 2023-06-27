@@ -76,7 +76,7 @@ backdrop.active {
     height: 41px;
     font-weight: 500;
     font-size: 14px;
-    line-height: 1.33;
+    line-height: 1.21;
     border: 1px solid var(--main-color);
     border-radius: 15px;
     cursor: pointer;
@@ -99,7 +99,7 @@ backdrop.active {
 .recipes-title {
     font-weight: 600;
     font-size: 18px;
-    line-height: 1.15;
+    line-height: 1.22;
     text-transform: uppercase;
     margin-bottom: 16px;
 }
@@ -107,7 +107,7 @@ backdrop.active {
 .cooking-recipes {
     font-weight: 400;
     font-size: 14px;
-    line-height: 1.66;
+    line-height: 1.28;
     margin-bottom: 40px;
     margin-top: 26px;
     width: 295px;
@@ -117,7 +117,7 @@ backdrop.active {
 .recipes-subtitle {
     font-weight: 400;
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.28;
     color: var(--primary-text-color);
     align-items: baseline;
     display: flex;
@@ -134,7 +134,7 @@ backdrop.active {
 .recipes-inf {
     font-weight: 500;
     font-size: 12px;
-    line-height: 1.33;
+    line-height: 1.28;
     color: var(--switch-color);
 
 }
@@ -152,7 +152,7 @@ backdrop.active {
 .rating {
     font-weight: 500;
     font-size: 12px;
-    line-height: 1.33;
+    line-height: 1.28;
     color: var(--switch-color);
     padding-right: 40px;
 
