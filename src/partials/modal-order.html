@@ -1,0 +1,47 @@
+<div class="modal-order backdrop ">
+  <button type="button" class="order-close-btn">
+    <svg class="icon-close" width="30" height="30">
+      <use href="./images/sprite.svg#icon-close"></use>
+    </svg>
+  </button>
+<h3 class="order-modal__title">Order now</h3>
+  <form class="order-modal_form">
+    
+    <label class="order-lable" for="username">Name</label>
+    <input
+      class="order-input"
+      type="text"
+      placeholder=""
+      id="username"
+      pattern=".{4,}" title="Must be at least 4 characters"
+    />
+
+    <label class="order-lable" for="Phone">Phone number</label>
+    <input
+      class="order-input"
+      type="tel"
+      placeholder=""
+      id="tel"
+       pattern="[0-9]{10}"
+  required
+    />
+      <label class="order-lable" for="Email">Email</label>
+    <input
+      class="order-input"
+      type="email"
+      placeholder=""
+      id="email"
+       
+    />
+  <div class="input-box--comment">
+            <label for="comment" class="order-lable">Comments</label>
+            <textarea
+              class="order-input--coment"
+              name="comments"
+              id="comments"
+              placeholder=""
+            ></textarea>
+          </div>
+    <button type="submit" class="btn-add--order">Send</button>
+    </form>
+</div>

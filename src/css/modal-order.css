@@ -1,0 +1,134 @@
+
+.backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+    opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 500ms ease, visibility 500ms ease;
+}
+
+.modal-order.active {
+    display: block;
+}
+
+.backdrop.active {
+    display: block;
+}
+
+
+
+.modal-order {
+    width: 335px;
+    height: 582px;
+    display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+       
+}
+
+
+.order-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);}
+
+
+
+.order-modal_form {
+display: flex;
+flex-direction: column;
+}
+
+.order-input {
+    width: 295px;
+    height: 46px;
+    border-radius: 15px;
+    margin-bottom: 16px;
+    color: var(--main-color);
+}
+
+.order-modal__title {
+    font-weight: 600; 
+     font-size:  18px; 
+     line-height: 1.22;
+     text-transform: uppercase;
+     margin-bottom: 40px;
+}
+.order-lable {
+    color: var(--primary-text-color-05);
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.22;
+
+}
+.input-box--comment {
+width: 295px;
+    height: 100px;
+    margin-bottom: 40px;
+}
+.order-input--coment {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 15px;
+    
+    color: var(--main-color);
+}
+.btn-add--order {
+width: 360px;
+height: 48px;
+font-weight: 500;
+font-size: 14px;
+line-height: 1.21;
+border: 1px solid var(--main-color);
+border-radius: 15px;
+cursor: pointer;
+transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-add--order:hover,
+.btn-add--order:focus {
+    background-color: var(--main-color);
+    color: #fff;
+    border: 1px solid var(--main-color);
+}
+
+@media screen and (min-width: 768px) {
+    .modal-order {
+        width: 440px;
+        height: 632px;
+        padding: 40px;
+    }
+        .order-input {
+            width: 360px;
+                height: 48px;
+                margin-bottom: 16px;
+        }
+                .input-box--comment {
+                    width: 360px;
+                        height: 100px;
+                        margin-bottom: 40px;
+                }
+}

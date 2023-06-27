@@ -16,3 +16,4 @@ import './js/popular';
 import './js/service/pop-up';
 import './js/pagination';
 import './js/pop-up'
+import './js/modal-order';

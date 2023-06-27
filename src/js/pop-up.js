@@ -1,24 +1,33 @@
 
 // /** Відкриття та закриття модального вікна */
-$(document).ready(function () {
-  $(".modal-close-btn").each(function () {
+// $(document).ready(function () {
+//   $(".modal-close-btn").each(function () {
 
-    $(this).click(function () {
-      $(".modal").css("display", "none");
-      $(".backdrop").css("visibility", "hidden");
-    });
-  });
-  $(".cards__btn").each(function () {
-    $(this).click(function () {
-      $(".modal").css("display", "block");
-      $(".backdrop").css("visibility", "visible");
-    });
-  });
-});
+//     $(this).click(function () {
+//       $(".modal").css("display", "none");
+//       $(".backdrop").css("visibility", "hidden");
+//     });
+//   });
+//   $(".btn-primary").each(function () {
+//     $(this).click(function () {
+//       $(".modal").css("display", "block");
+//       $(".backdrop").css("visibility", "visible");
+//     });
+//   });
+// });
 
-
-
-
+/**2 ф-я */
+// var modalRecipte = document.querySelector('.modal-order');
+// var openBtnRecipte = document.querySelector('.cards__btn');
+// var closeBtnRecipte = document.querySelector('.modal-close-btn');
+// function openModal() {
+//   modal.style.display = 'block';
+// }
+// function closeModal() {
+//   modal.style.display = 'none';
+// }
+// openBtn.addEventListener('click', openModal);
+// closeBtn.addEventListener('click', closeModal);
 
 
 /** CКРОЛ */
@@ -48,7 +57,3 @@ Array.from(recipeCook).forEach((element) => {
     
   }
 });
-
-
-
-
