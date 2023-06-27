@@ -1,4 +1,15 @@
 import './js/slider';
 import './js/pop-up'
+
+//Header---------------------
+
+import './js/header-script';
+
+import './js/header-mobile-menu';
+
+import './js/all-categories';
+import './js/ratings';
 import './js/popular';
-import './js/pagination'
+import './js/service/pop-up';
+import './js/popular';
+import './js/pagination';
