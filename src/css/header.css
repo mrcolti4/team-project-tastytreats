@@ -2,6 +2,12 @@
   text-decoration: none;
 }
 /* ---------------------------------------------- */
+.nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25px;
+}
 .logo-header {
   color: var(--main-color);
   text-align: center;
@@ -10,97 +16,188 @@
   line-height: 18px;
   letter-spacing: -0.64px;
 }
-
 .logo-color {
   color: var(--primary-text-color);
 }
-
-.nav-link {
-  color: var(--primary-text-color);
-  font-size: 12px;
-  font-family: Inter;
-  font-weight: 500;
-
-  /* line-height: 1.1666; */
-  /* letter-spacing: 0.03em; */
-  /* text-transform: uppercase; */
-}
-/* .nav-link.home {
-  margin-right: 16px;
-} */
-
-.nav-link.current {
-  color: var(--main-color);
-}
-
-.nav-header {
+.header-btn-box {
   display: flex;
   align-items: center;
-
-  /* justify-content: space-between; */
-
-  padding-top: 25px;
+  gap: 14px;
 }
-
 .shopping-link {
-  margin-left: auto;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.header-menu-btn {
-  padding: 0;
+  background-color: transparent;
   border: none;
-  color: black;
+  padding: 0;
 }
+.shopping-icon {
+  fill: transparent;
+  stroke: var(--primary-text-color);
+}
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.header-menu-icon {
-  color: currentColor;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.burger-menu-icon {
+  /* color: currentColor; */
   width: 32px;
   height: 32px;
 }
+/* ------------------------------------------ */
+/* ---TOGGLE SWITCH--- */
+input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 46px;
+  height: 20px;
+  background: #cecdcd;
+  display: block;
+  border-radius: 18px;
+  position: relative;
+}
+label:after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 18px;
+  height: 18px;
+  background: #f8f8f8;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+input:checked + label {
+  background: #9bb537;
+}
+input:checked + label:after {
+  left: calc(100% - 1px);
+  transform: translateX(-100%);
+}
+label:active:after {
+  width: 26px;
+}
+/* ------------------------------------------ */
+/* MOBIL WINDOW */
+.menu-toggle {
+  min-height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-/* -----Бургер мобилка----- */
-
-/* ---------------Медиа запросы--------------- */
-@media screen and (max-width: 768px) {
-  .nav-list {
-    display: none;
-  }
-  .theme-switche {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+}
+@media (min-width: 768px) {
+  .menu-toggle {
     display: none;
   }
 }
+.menu-toggle:hover,
+.menu-toggle:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 32px;
+  background-color: #3f51b5;
+  z-index: 999;
 
+  transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
+}
+.menu-container.is-open {
+  transform: translateX(0);
+}
+.menu-container .menu-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #fff;
+}
+.mobile-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.mobile-menu .link {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+/* ------------------------------------------ */
+/* ----- МЕДИА ЗАПРОСЫ ----- */
+@media screen and (max-width: 767px) {
+  .nav-list {
+    display: none;
+  }
+  .theme-switcher {
+    display: none;
+  }
+}
 @media screen and (min-width: 768px) {
+  .nav-header {
+    padding-top: 30px;
+  }
+  .burger-menu {
+    display: none;
+  }
+  .theme-switcher {
+    height: 20px;
+  }
+  .header-btn-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 16;
+  }
+  .nav-link {
+    color: var(--primary-text-color);
+    font-size: 12px;
+    font-family: Inter;
+    font-weight: 500;
+  }
+  .nav-link.current {
+    color: var(--main-color);
+  }
   .logo-header {
     font-size: 18px;
     line-height: 20px;
     letter-spacing: -0.72px;
   }
-
-  .nav-list {
-    display: flex;
-    align-items: center;
-
-    margin-right: 203px;
-
-    gap: 16;
-  }
-
-  .swich-link {
-    margin-left: 14px;
-  }
-
-  .header-menu-btn {
-    display: none;
-
-    padding: 0;
-  }
 }
-
 @media screen and (min-width: 1280px) {
-  .nav-list {
-    margin-right: 391px;
+  .nav-header {
+    padding-top: 42px;
+  }
+  .header-btn-box {
+    gap: 18px;
   }
 }
-
-/* ------------------------------------------ */

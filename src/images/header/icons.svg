@@ -22,7 +22,7 @@
                 d="M27.151 13.414H3.878M27.151 8.242H3.878M27.151 18.586H3.878M27.151 23.758H3.878"
                 style="stroke:var(--color1, #fff)" />
         </symbol>
-        <symbol id="icon-menu-dark" viewBox="0 0 31 32">
+        <symbol id="icon-menu-dark" stroke='#050505' viewBox="0 0 31 32">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.939"
                 d="M27.151 13.414H3.878M27.151 8.242H3.878M27.151 18.586H3.878M27.151 23.758H3.878" />
         </symbol>

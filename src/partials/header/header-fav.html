@@ -16,37 +16,36 @@
         >tasty<span class="logo-color">treats.</span></a
       >
 
-      <a
-        class="shopping-link link"
-        href="tel:+380730000000"
-        rel="noopener noreferrer"
-        aria-label="shopping-cart"
-      >
-        <svg class="shopping-icon" width="24" height="24">
-          <use
-            href="/src/images/header/icons.svg#icon-shopping-cart-dark"
-          ></use>
-        </svg>
-      </a>
-
-      <a href="">
-        <svg class="theme-switche" width="46" height="20">
-          <use href="/src/images/header/icons.svg#icon-switch-green"></use>
-        </svg>
-      </a>
-
-      <button
-        class="header-menu-btn js-open-menu"
-        type="button"
-        aria-expanded="false"
-        aria-controls="mobile-menu"
-      >
-        <img src="/src/images/header/svg/menu-dark.svg" alt="" />
-
-        <!-- <svg class="header-menu-icon" width="32" height="32">
-          <use href="/src/images/header/svg/menu-dark.svg"></use>
-        </svg> -->
-      </button>
+      <div class="header-btn-box">
+        <!-- shopping -->
+        <a
+          class="shopping-link link"
+          href="tel:+380730000000"
+          rel="noopener noreferrer"
+          aria-label="shopping-cart"
+        >
+          <svg class="shopping-icon" width="24" height="24">
+            <use
+              href="/src/images/header/icons.svg#icon-shopping-cart-dark"
+            ></use>
+          </svg>
+        </a>
+        <!-- Бургер мобилка -->
+        <button
+          class="burger-menu js-open-menu"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg class="burger-menu-icon" width="32" height="32">
+            <use href="/src/images/header/icons.svg#icon-menu-dark"></use>
+          </svg>
+        </button>
+        <!-- Toggle Switch -->
+        <div class="theme-switcher">
+          <input type="checkbox" id="switch" /><label for="switch"></label>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
