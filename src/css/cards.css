@@ -16,3 +16,15 @@
     left: 16px;
 
 }
+
+.btn-popup {
+    width: Hug (93px);
+    height: Hug (31px);
+    padding: 8px 16px ;
+    border-radius: 8px;
+    gap: 10px;    
+    color: color#9BB537;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+  }
