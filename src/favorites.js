@@ -1,1 +1,1 @@
-import './js/localctorage';
+import './js/localctorage.js';
