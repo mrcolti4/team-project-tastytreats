@@ -1,4 +1,5 @@
 import './js/slider';
+import './js/pop-up'
 
 //Header---------------------
 
