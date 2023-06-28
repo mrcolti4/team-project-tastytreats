@@ -38,7 +38,7 @@ function openModalOpen() {
 function closeModalClose() {
     document.body.classList.remove('overflowHidden');
     window.removeEventListener('keydown', onEscPress);
-    document.body.style.overflow = 'auto';
+    document.body.classList.remove('overflowHidden');
     refs.backdrop.classList.remove('active');
     refs.modal.classList.remove('active');
 }
