@@ -1,32 +1,50 @@
-<div class="backdrop backdrop--hidden">
-  <div id="modal" class="modal container order">
-    <button type="button" class="modal-close-btn">
-      <svg class="icon-close" width="20" height="20">
+<div class="backdrop-order">
+  <div id="modal-order" class="modal-order">
+    <button type="button" class="order-modal-close-btn">
+      <svg class="order-icon-close" width="20" height="20">
         <use href="./images/sprite.svg#icon-close"></use>
       </svg>
     </button>
     <div class="wrap-recipe">
-      <form action="#" class="modal-form" autocomplete="on">
-        <strong class="contact-modal-title">Contact us</strong>
-        <p class="contact-modal-description">
-          If you have any additional questions or you want to clarify something
-          before you make an order please fill in your contact details. We will
-          call you back.
-        </p>
+      <form action="#" class="modal-form-order" autocomplete="on">
+        <strong class="contact-modal-title">Order now</strong>
+
         <div class="contact-field-wrapper">
           <label class="input-box">
             <input
               type="text"
               class="input-field input-field-name input-js"
-              name="modal-user-name"
+              name="name"
               required
               pattern="[A-Za-z]{1,32}"
-              placeholder="Your name"
+              placeholder=" "
             />
-            <span class="input-label">Name</span>
+            <span class="order-input-label">Name</span>
             <svg class="input-warning-icon" width="14" height="14">
-              <use class="error" href="./img/icons.svg#icon-error"></use>
-              <use class="correct" href="./img/icons.svg#icon-correct"></use>
+              <use class="error" href="./images/sprite.svg#icon-error"></use>
+              <use
+                class="correct"
+                href="./images/sprite.svg#icon-correct"
+              ></use>
+            </svg>
+          </label>
+
+          <label class="input-box">
+            <input
+              type="tel"
+              class="input-field input-field-tel input-js"
+              name="tel"
+              required
+              pattern="[0-9]{10}"
+              placeholder=" "
+            />
+            <span class="order-input-label">Phone number</span>
+            <svg class="input-warning-icon" width="14" height="14">
+              <use class="error" href="./images/sprite.svg#icon-error"></use>
+              <use
+                class="correct"
+                href="./images/sprite.svg#icon-correct"
+              ></use>
             </svg>
           </label>
 
@@ -34,26 +52,39 @@
             <input
               type="email"
               class="input-field input-field-tel input-js"
-              name="modal-user-email"
+              name="email"
               required
-              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-              placeholder="Your email"
+              pattern="[^@\s]+@[^@\s]+"
+              placeholder=" "
             />
-            <span class="input-label">Email</span>
+            <span class="order-input-label">Email</span>
             <svg class="input-warning-icon" width="14" height="14">
-              <use class="error" href="./img/icons.svg#icon-error"></use>
-              <use class="correct" href="./img/icons.svg#icon-correct"></use>
+              <use class="error" href="./images/sprite.svg#icon-error"></use>
+              <use
+                class="correct"
+                href="./images/sprite.svg#icon-correct"
+              ></use>
+            </svg>
+          </label>
+
+          <label class="input-box">
+            <textarea
+              class="input-field input-field-textarea input-js"
+              name="comment"
+              rows="4"
+            ></textarea>
+            <span class="order-input-label">Comment</span>
+            <svg class="input-warning-icon" width="14" height="14">
+              <use class="error" href="./images/sprite.svg#icon-error"></use>
+              <use
+                class="correct"
+                href="./images/sprite.svg#icon-correct"
+              ></use>
             </svg>
           </label>
         </div>
 
-        <button
-          type="submit"
-          class="btn contact-btn btnSubmit button-js"
-          data-modal="2"
-        >
-          Send
-        </button>
+        <button type="submit" class="order-btn" data-modal="2">Send</button>
       </form>
     </div>
   </div>

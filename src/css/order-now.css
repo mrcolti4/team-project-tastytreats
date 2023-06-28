@@ -1,3 +1,117 @@
-.modal.order {
-  width: 440px;
+.backdrop-order {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+
+  background: rgba(0, 0, 0, 0.2);
+  transition: opacity 500ms ease, visibility 500ms ease;
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.backdrop-order.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-order {
+  width: 335px;
+  background-color: var(--bgc-background);
+  padding: 28px 20px;
+  border-radius: 15px;
+
+  /* position: relative; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal-order.active {
+  visibility: visible;
+  opacity: 1;
+}
+.order-modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: fill var(--transition-set);
+}
+
+.order-icon-close {
+  display: inline-block;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.order-icon-close:hover,
+.order-icon-close:focus {
+  fill: var(--main-color);
+  stroke: var(--main-color);
+}
+
+.order-btn {
+  width: 100%;
+  height: 46px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.21;
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+  color: var(--light-text-color);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: color var(--transition-set);
+}
+
+.order-btn:hover,
+.order-btn:focus {
+  background-color: var(--main-color);
+  color: var(--primary-text-color);
+  border: 1px solid var(--main-color);
+}
+
+.contact-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: calc(22 / 18);
+  display: block;
+  text-transform: uppercase;
+
+  margin-bottom: 54px;
+}
+.contact-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  margin-bottom: 40px;
+}
+
+/* ///////////////// */
+@media screen and (min-width: 768px) {
+  .modal-order {
+    width: 440px;
+    padding: 40px;
+  }
+  .contact-modal-title {
+    margin-bottom: 66px;
+  }
+  .contact-field-wrapper {
+    gap: 44px;
+  }
 }

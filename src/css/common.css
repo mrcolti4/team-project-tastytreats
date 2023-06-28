@@ -4,7 +4,9 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bgc-background);
 }
-
+body.overflowHidden {
+  overflow: hidden;
+}
 .container {
   min-width: 320px;
   max-width: 375px;
