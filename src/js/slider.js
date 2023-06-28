@@ -4,16 +4,17 @@ let $ = require('jquery');
 $(document).ready(function () {
   $('.slider').slick({
     arrows: false,
-    dots: false,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    dots: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 6000,
   });
 });
+
 // Пошук елемента DOM
 const refs = {
-  slider: document.querySelector('.slider'),
+  slider: document.querySelector('.slieder'),
 };
 
 let arrEvents = null;
@@ -28,8 +29,6 @@ async function fetchEvents() {
   return arrEvents;
 }
 
-// Тестую запит
-fetchEvents();
 // Робимо розмітку
 
 function renderSlider(arrEvents) {
@@ -38,22 +37,9 @@ function renderSlider(arrEvents) {
   const markup = arrEvents
     .map(event => {
       return `
-<div class="slider-cook" data-id="${event._id}>
-        <div class="slider-cook" >
-        <img src="${event.cook.imgUrl}" alt="${event.cook.name}">
-      </div>
-  
-  
-      <div class="slider-item">
-  <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
-  <p class="description">${event.topic.name}</p>
-  <p class="country">${event.topic.area}</p>
-      </div>
-  
-      <div class="slider-finally-img">
-        <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
-      </div>
-      </div>
+
+      
+   
        
         `;
     })
@@ -68,4 +54,5 @@ async function fetchAndRender() {
   const data = await fetchEvents();
   renderSlider(data);
 }
+
 // fetchAndRender()
