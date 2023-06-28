@@ -15,9 +15,9 @@ function clearRecipeList() {
   recipeList.innerHTML = '';
 }
 
-function generateMarkup({ title, description, preview, rating }) {
+function generateMarkup({ _id, title, description, preview, rating }) {
   return `
-    <li class="cards__item items-set">
+    <li class="cards__item items-set" data-id="${_id}">
     <img src="${preview}" alt="${title}" class="cards__img" />
     <svg class="cards__heart" width="19" height="17">
       <use href="./images/sprite.svg#icon-heart"></use>
