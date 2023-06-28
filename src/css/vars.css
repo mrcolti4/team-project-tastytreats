@@ -1,16 +1,16 @@
 :root {
-    --main-color: #9BB537;
-    --primary-text-color: #050505;
-    --primary-text-color-08: rgba(5, 5, 5, 0.80);
-    --primary-text-color-05: rgba(5, 5, 5, 0.50);
-    --primary-text-color-03: rgba(5, 5, 5, 0.30);
-    --dark-th-text-color-08: rgba(255, 255, 255, 0.80);
-    --dark-th-text-color-05: rgba(255, 255, 255, 0.50);
-    --dark-th-text-color-03: rgba(255, 255, 255, 0.30);
-    --light-text-color: #F8F8F8;
-    --switch-color :#CECDCD;
+  --main-color: #9bb537;
+  /* --primary-text-color: #050505; */
+  --primary-text-color-08: rgba(5, 5, 5, 0.8);
+  --primary-text-color-05: rgba(5, 5, 5, 0.5);
+  --primary-text-color-03: rgba(5, 5, 5, 0.3);
+  --dark-th-text-color-08: rgba(255, 255, 255, 0.8);
+  --dark-th-text-color-05: rgba(255, 255, 255, 0.5);
+  --dark-th-text-color-03: rgba(255, 255, 255, 0.3);
+  --light-text-color: #f8f8f8;
+  --switch-color: #cecdcd;
 
-    /* Змінні для recipe таблиці */
-    --ident: 16px;
-    --items: 3;
+  /* Змінні для recipe таблиці */
+  --ident: 16px;
+  --items: 3;
 }
