@@ -4,13 +4,19 @@
   --primary-text-color-08: rgba(5, 5, 5, 0.8);
   --primary-text-color-05: rgba(5, 5, 5, 0.5);
   --primary-text-color-03: rgba(5, 5, 5, 0.3);
+  --primary-text-color-02: rgba(5, 5, 5, 0.2);
   --dark-th-text-color-08: rgba(255, 255, 255, 0.8);
   --dark-th-text-color-05: rgba(255, 255, 255, 0.5);
   --dark-th-text-color-03: rgba(255, 255, 255, 0.3);
   --light-text-color: #f8f8f8;
   --switch-color: #cecdcd;
 
+  --input-label-error: #e74a3b;
+  --input-label-correct: #3cbc81;
+
   /* Змінні для recipe таблиці */
   --ident: 16px;
   --items: 3;
+
+  --transition-set: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 }
