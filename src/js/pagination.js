@@ -1,5 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import { showRecipes } from './all-recipes';
 
 const container = document.getElementById('tui-pagination-container');
 
@@ -33,3 +34,7 @@ const options = {
 const paginationP = new Pagination(container, options);
 
 paginationP.getCurrentPage();
+paginationP.on('afterMove', event => {
+  const currentPage = event.page;
+  showRecipes({ page: currentPage, limit: 9 });
+});

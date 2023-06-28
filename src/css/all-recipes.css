@@ -1,12 +1,10 @@
 .cards__list {
-  margin-bottom: 40px;
   row-gap: 24px;
   --items: 1;
 }
 
 @media screen and (min-width: 768px) {
   .cards__list {
-    margin-bottom: 64px;
     row-gap: 16px;
     --items: 2;
   }
@@ -14,7 +12,6 @@
 
 @media screen and (min-width: 1280px) {
   .cards__list {
-    margin-bottom: 64px;
     row-gap: 32px;
     --items: 3;
   }

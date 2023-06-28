@@ -4,7 +4,10 @@ import { markUpRating } from './ratings';
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
 const windowWidth = document.documentElement.clientWidth;
-let recipesPerPage, totalRecipesPage;
+
+function clearRecipeList() {
+  recipeList.innerHTML = '';
+}
 
 function generateMarkup({ title, description, preview, rating }) {
   return `
@@ -91,8 +94,6 @@ async function getAllRecipes(url, params = {}) {
 
 async function createRecipeList(params = {}) {
   const { results, perPage, totalPages } = await getAllRecipes(URL, params);
-  totalRecipesPage = Number(totalPages);
-  recipesPerPage = Number(perPage);
   return results.reduce(
     (markup, currentRecipe) => markup + generateMarkup(currentRecipe),
     ''
@@ -101,6 +102,7 @@ async function createRecipeList(params = {}) {
 
 async function showRecipes(params = {}) {
   const recipes = await createRecipeList(params);
+  clearRecipeList();
   recipeList.insertAdjacentHTML('beforeend', recipes);
   markUpRating();
 }
@@ -112,3 +114,4 @@ if (windowWidth < 768) {
 } else if (windowWidth > 1280) {
   showRecipes({ limit: 9 });
 }
+export { showRecipes };

@@ -1,6 +1,14 @@
+.pagination {
+  margin-top: 40px;
+}
+@media screen and (min-width: 768px) {
+  .pagination {
+    margin-top: 64px;
+  }
+}
+
 .tui-pagination {
   height: 40px;
-  margin: 14px 0 12px;
   line-height: normal;
   text-align: center;
   font-size: 0;
@@ -36,8 +44,11 @@
 
 .pagination .pag__current-page {
   background-color: var(--main-color);
-
   margin-right: 8px;
+}
+
+.tui-pagination .tui-last-child.tui-is-selected {
+  margin: 0;
 }
 
 .pagination .pag__current-page:hover {
@@ -47,6 +58,7 @@
 .tui-first-child {
   margin-right: 8px;
 }
+
 .pagination .pag__page-btn {
   margin: 0 8px 0 0;
 }
@@ -74,4 +86,30 @@
 
 .tui-pagination .tui-is-disabled:hover {
   background: var(--primary-text-color);
+}
+
+@media screen and (min-width: 768px) {
+  .pagination .pag__current-page {
+    margin: 0 10px 0 0;
+  }
+
+  .pagination .pag__page-btn {
+    margin: 0 10px 0 0;
+  }
+
+  .tui-pagination .tui-next {
+    margin-left: 24px;
+  }
+
+  .tui-pagination .tui-prev {
+    margin-right: 24px;
+  }
+
+  .pagination .pag__btn-move:first-child {
+    margin-right: 8px;
+  }
+
+  .tui-pagination .tui-page-btn:last-child {
+    margin-left: 8px;
+  }
 }
