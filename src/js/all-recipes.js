@@ -5,6 +5,12 @@ const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
 const windowWidth = document.documentElement.clientWidth;
 
+export async function getRecipesData(params) {
+  const { perPage, totalPages } = await getAllRecipes(URL, params);
+
+  return { perPage, totalPages };
+}
+
 function clearRecipeList() {
   recipeList.innerHTML = '';
 }
@@ -88,12 +94,13 @@ async function getAllRecipes(url, params = {}) {
       page,
     },
   });
-  console.log(response.data);
+
   return response.data;
 }
 
 async function createRecipeList(params = {}) {
-  const { results, perPage, totalPages } = await getAllRecipes(URL, params);
+  const { results } = await getAllRecipes(URL, params);
+
   return results.reduce(
     (markup, currentRecipe) => markup + generateMarkup(currentRecipe),
     ''
@@ -114,4 +121,5 @@ if (windowWidth < 768) {
 } else if (windowWidth > 1280) {
   showRecipes({ limit: 9 });
 }
+
 export { showRecipes };
