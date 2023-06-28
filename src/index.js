@@ -15,4 +15,6 @@ import './js/popular';
 import './js/popular';
 import './js/service/pop-up';
 import './js/pagination';
+import './js/scheme';
 import './js/pop-up'
+
