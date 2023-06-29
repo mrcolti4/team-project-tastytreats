@@ -48,11 +48,9 @@
   padding: 0;
 }
 .burger-menu-icon {
-  /* color: currentColor; */
   width: 32px;
   height: 32px;
 }
-/* ------------------------------------------ */
 /* ---TOGGLE SWITCH--- */
 .switcher-input[type='checkbox'] {
   height: 0;
@@ -91,7 +89,6 @@
 .input-label:active:after {
   width: 26px;
 }
-/* ------------------------------------------ */
 /* MOBIL WINDOW */
 .menu-toggle {
   min-height: 40px;
@@ -121,6 +118,9 @@
   position: fixed;
   top: 0;
   left: 0;
+
+  bottom: 0;
+
   width: 100vw;
   height: 100vh;
   /* padding: 32px; */
@@ -135,6 +135,9 @@
 }
 .menu-container.is-open {
   transform: translateX(0);
+}
+.block {
+  overflow: hidden;
 }
 .menu-container .menu-toggle {
   position: absolute;

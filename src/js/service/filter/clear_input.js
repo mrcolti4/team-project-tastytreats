@@ -1,5 +1,17 @@
+import { onEmptyInput } from '../../filters';
+
+const windowWidth = document.documentElement.clientWidth;
+let limitCount = 0;
+if (windowWidth < 768) {
+  limitCount = 6;
+} else if (windowWidth > 768 && windowWidth < 1280) {
+  limitCount = 8;
+} else if (windowWidth > 1280) {
+  limitCount = 9;
+}
+
 const input = document.querySelector('.js-input');
-const clinInput = document.querySelector('.js-clin-input');
+const clearInput = document.querySelector('.js-clear-input');
 const serchIcon = document.querySelector('.js-icon-serch');
 
 input.addEventListener('focus', () => {
@@ -10,17 +22,18 @@ input.addEventListener('blur', () => {
 });
 
 input.addEventListener('input', turnOnOffCross);
-clinInput.addEventListener('click', clickCross);
+clearInput.addEventListener('click', clickCross);
 
 function turnOnOffCross() {
   if (input.value.trim().length > 0) {
-    clinInput.classList.add('active');
+    clearInput.classList.add('active');
     return;
   }
-  clinInput.classList.remove('active');
+  clearInput.classList.remove('active');
 }
 
 function clickCross() {
   input.value = '';
-  clinInput.classList.remove('active');
+  clearInput.classList.remove('active');
+  onEmptyInput();
 }

@@ -345,17 +345,17 @@
   transform: translate(-50%, -50%);
 }
 /* Стилі для скролу */
-.recipes-container::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
 }
-.recipes-container::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background-color: #f1f1f1;
   /* колір фону треку */
 }
-.recipes-container::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: #888888;
   border-radius: 5px;
 }
-.recipes-container::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background-color: #9bb537;
 }
