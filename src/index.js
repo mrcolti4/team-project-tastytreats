@@ -1,4 +1,8 @@
 import './js/slider';
+import './js/slick.min';
+
+
+
 
 import './js/header-mobile-menu';
 
