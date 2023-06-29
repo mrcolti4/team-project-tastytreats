@@ -8,7 +8,7 @@ let $ = require('jquery');
 function sliderStart () {
   $(document).ready(function () {
     $('.slider').slick({
-      
+      variableWidth: true,
       arrows: false,
       dots: true,
       slidesToShow: 3,
