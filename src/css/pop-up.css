@@ -110,6 +110,8 @@
   line-height: 1.22;
   text-transform: uppercase;
   margin-bottom: 14px;
+
+  color: var(--primary-text-CH-color);
 }
 
 /* .text-cook {
@@ -137,17 +139,19 @@
   margin-bottom: 40px;
   margin-top: 26px;
   width: 295px;
+
+  color: var(--primary-text-CH-color-08);
 }
 
 .recipes-subtitle {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.28;
-  color: var(--primary-text-color);
+  color: var(--primary-text-CH-color);
   align-items: baseline;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid var(--switch-color);
+  border-bottom: 1px solid var(--primary-text-CH-color-01);
   padding-bottom: 6px;
   padding-top: 14px;
 }
@@ -160,7 +164,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.28;
-  color: var(--switch-color);
+  color: var(--primary-text-CH-color-05);
 }
 
 .table-border {
@@ -222,6 +226,8 @@
   border-radius: 35px;
   padding: 8px 16px;
   cursor: pointer;
+
+  color: var(--primary-text-CH-color);
 }
 
 .all-rating {
@@ -230,9 +236,7 @@
   margin-bottom: 18px;
   gap: 16px;
 }
-.rating__value.detail {
-  color: var(--primary-text-color-05);
-}
+
 .trailer-box {
   position: fixed;
   top: 15px;
