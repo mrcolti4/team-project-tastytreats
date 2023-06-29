@@ -2,16 +2,21 @@ let $ = require('jquery');
 
 // Налаштування слайдеру
 
+
+
+
 function sliderStart () {
   $(document).ready(function () {
     $('.slider').slick({
+      variableWidth: true,
       arrows: false,
       dots: true,
       slidesToShow: 3,
       slidesToScroll: 3,
       autoplay: false,
       autoplaySpeed: 6000,
-      adaptiveHeight: true,
+     
+     
       
     });
   });
@@ -52,8 +57,7 @@ function renderSlider(arrEvents) {
 
     <div class="slider-item-topic">
       <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
-      <p class="description">${event.topic.name}</p>
-      <p class="country">${event.topic.area}</p>
+     
     </div>
 
     <div class="item-finally">
@@ -71,7 +75,8 @@ function renderSlider(arrEvents) {
 
 // Виконую запит, та роблю розмітку.
 
-
+{/* <p class="description">${event.topic.name}</p>
+<p class="country">${event.topic.area}</p> */}
 
 
 async function start() {

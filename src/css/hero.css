@@ -33,118 +33,80 @@
 
   margin-bottom: 48px;
 }
-.slider {
- 
-   
+/* Слайдер */
+
+.slider-item-cook {
+}
+
+.slider-item-cook img {
+}
+.slider-item-topic {
+}
+
+.slider-item-finally {
+}
+
+.slider-item-topic {
+}
+
+.slider-item-topic img {
+}
+.slider-item-topic .description {
+}
+.slider-item-topic .country {
+}
+
+.slider-item-finally {
+}
+.slider-item-finally img {
 }
 
 .slider-item {
-
 }
 /* slick */
+
+.slick-track {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  min-width: 0;
+  width: 781px;
+  height: 402px;
+}
+.slick-slide img {
+  display: block;
+}
 
 .slick-list {
   overflow: hidden;
 }
-.slick-track {
-  width: 871px;
-  height: 468px;
- display: flex;
- align-items: center;
- justify-content: center;
-
-  gap: 8px;
-
-  
-}
-.slick-track img {
-  width: 100%;
-}
-
 .slick-dots {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 2px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
 }
 .slick-dots li {
   list-style: none;
 }
 
 .slick-dots button {
-width: 15px;
-height: 15px;
-border: 1px;
-color: antiquewhite;
+  width: 15px;
+  height: 15px;
+  border: 1px;
+  color: antiquewhite;
 
   font-size: 0;
   border-radius: 50%;
-
 }
 
 .slick-dots li.slick-active button {
   background-color: var(--main-color);
 }
 
-
-
-.slider-item-cook {
-
-  
-  border-radius: 15px;
-background: #050505;
-
-}
-
-.slider-item-cook img {
-  
- 
-}
-
-
-.slider-item-topic {
-
-
-  
-}
-
-.slider-item-topic img {
-
-}
-.slider-item-topic .description {
- 
-}
-.slider-item-topic .country {
- 
-}
-
-
-.slider-item-finally {
- 
-}
-.slider-item-finally img {
- 
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .hero-wrapper {
     width: 446px;
 
@@ -163,12 +125,8 @@ background: #050505;
 
   .slider {
     width: 871px;
-  
   }
 }
-
-
-
 
 @media screen and (min-width: 1280px) {
   .hero-wrapper {
@@ -183,4 +141,4 @@ background: #050505;
   .slider {
     padding-top: 100px;
   }
-}
+} */
