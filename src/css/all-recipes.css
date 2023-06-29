@@ -51,16 +51,26 @@
   border-radius: 15px;
 }
 
-.cards__heart {
+.cards__fav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: none;
+  border: none;
   position: absolute;
   right: 16px;
   top: 16px;
+}
+
+.cards__heart {
   fill: transparent;
   stroke: #f8f8f8;
   transition: fill 0.3s;
   cursor: pointer;
 }
 
+.onFavorites .cards__heart,
 .cards__heart:hover {
   fill: #f8f8f8;
 }

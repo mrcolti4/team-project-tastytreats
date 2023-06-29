@@ -1,19 +1,11 @@
 import localctorage from './localctorage';
 import axios from 'axios';
-// {
-//     _id: '6462a8f74c3d0ddd28897fc1',
-//     title: 'Chocolate Gateau',
-//     category: 'Dessert',
-//     description:
-//       'A French dessert consisting of layers of chocolate sponge cake and chocolate ganache, typically topped with chocolate glaze and chocolate decorations.',
-//     preview:
-//       'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560403/zyahxajhkglf8sisiqlh.jpg',
-//     time: '75',
-//     rating: 3,
-//   }
+import { omit } from 'lodash';
+
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes/';
 const KEY = 'favCards';
-const cardArr = {};
+const recipeObj = {};
+let favRecipesObj = localctorage.load(KEY) || {};
 
 async function getInfo(url, id) {
   const response = await axios.get(`${url}/${id}`);
@@ -23,13 +15,28 @@ async function getInfo(url, id) {
 
 async function onBtnClick(e) {
   const target = e.target;
-  if (target.matches('svg.cards__heart')) {
-    const listItem = target.parentElement;
-    const id = listItem.dataset.id;
-    if (!cardArr[id]) {
+  const listItem = target.closest('li.cards__item');
+  const id = listItem.dataset.id;
+
+  if (target.closest('button.cards__fav-btn')) {
+    if (!favRecipesObj[id]) {
       const data = await getInfo(URL, id);
-      cardArr[id] = data;
-      localctorage.save(KEY, cardArr);
+
+      listItem.classList.add('onFavorites');
+
+      favRecipesObj[id] = data;
+      localctorage.save(KEY, favRecipesObj);
+
+      return;
+    }
+
+    if (Object.keys(favRecipesObj).includes(id)) {
+      listItem.classList.remove('onFavorites');
+      // Видалення об'єкту з улюбленних за допомогою omit
+      favRecipesObj = omit(favRecipesObj, id);
+      localctorage.save(KEY, favRecipesObj);
+
+      return;
     }
   }
 }
