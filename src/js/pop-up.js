@@ -1,4 +1,5 @@
 import { Loader } from './loader'
+import { markUpRating } from './ratings';
 
 let refs = {
   closeVideo: document.querySelector('.tiezer-close-btn'),
@@ -11,6 +12,10 @@ let refs = {
   time: document.querySelector('.js-minute'),
   modalRecipe: document.querySelector('.js-modal-recipe'),
   backdropRecipe: document.querySelector('.js-backdrop-recipe'),
+  ratingBox: document.querySelector('.js-rating-recipe-wraper'),
+  IngredientBox: document.querySelector('.recipes-list'),
+  hashtagsBox: document.querySelector('.hashtags-list'),
+  textContentBox: document.querySelector('.cooking-recipes'),
 };
 
 
@@ -36,7 +41,7 @@ $(document).ready(function () {
 function RenderCardInfoRecipe(id) {
   // Loader.Start();
 
-  fetchRecipeById('6462a8f74c3d0ddd28897feb');
+  fetchRecipeById(id);
   setTimeout(() => {
     refs.backdropRecipe.classList.add('active');
     refs.modalRecipe.classList.add('active');
@@ -45,7 +50,7 @@ function RenderCardInfoRecipe(id) {
 }
 
 setTimeout(() => {
-  RenderCardInfoRecipe(111);
+  RenderCardInfoRecipe('6462a8f74c3d0ddd28897fc1');
 }, 1000)
 
 
@@ -60,23 +65,19 @@ function getRefs() {
 async function fetchRecipeById(id) {
   const resp = await fetch(`https://tasty-treats-backend.p.goit.global/api/recipes/${id}`);
   const data = await resp.json();
-  console.log(data);
 
-  // renderModalRecipe(data);
-  // refs = getRefs();
 
   renderIMG(data);
   renderVIDEO(data)
   renderTitle(data);
+  renderRanting(data);
+  markUpRating();
+
+  renderIngridient(data);
+  renderHashtags(data);
+  renderText(data);
 
 }
-
-function renderModalRecipe(data) {
-  const markUp = 1;
-
-  modalRecipe.insertAdjacentHTML('beforeend', markUp);
-}
-// refs = getRefs();
 
 
 
@@ -132,3 +133,75 @@ function getKeyYouTybe(url) {
 function renderTitle(data) {
   refs.title.textContent = data.title;
 }
+
+function renderRanting(data) {
+  let markupR = `
+  <div class="cards__rating rating">
+          <div class="rating__value detail">${data.rating}</div>
+          <div class="rating__body">
+            <div class="rating__active"></div>
+            <div class="rating__items">
+              <input
+                type="radio"
+                class="rating__item"
+                name="rating"
+                value="1"
+              />
+              <input
+                type="radio"
+                class="rating__item"
+                name="rating"
+                value="2"
+              />
+              <input
+                type="radio"
+                class="rating__item"
+                name="rating"
+                value="3"
+              />
+              <input
+                type="radio"
+                class="rating__item"
+                name="rating"
+                value="4"
+              />
+              <input
+                type="radio"
+                class="rating__item"
+                name="rating"
+                value="5"
+              />
+            </div>
+          </div>
+        </div>`;
+  refs.ratingBox.insertAdjacentHTML('beforeend', markupR);
+}
+
+function renderIngridient(data) {
+  const markup = data.ingredients.map(({ measure, name }) => {
+    return `<li class="recipes-subtitle">
+                ${name}
+                <p class="recipes-inf" p>${measure}</p>
+              </li>`
+  }).join('');
+
+  refs.IngredientBox.insertAdjacentHTML('beforeend', markup);
+}
+
+function renderHashtags(data) {
+  if (data.tags.length === 0) {
+    return;
+  }
+  const markup = data.tags.map((tag) => {
+    return ` <li class="hashtags">#${tag}</li>`
+  }).join('');
+
+  refs.hashtagsBox.insertAdjacentHTML('beforeend', markup);
+}
+
+function renderText(data) {
+  refs.textContentBox.textContent = data.instructions;
+  refs.time.textContent = data.time + " min";
+}
+
+

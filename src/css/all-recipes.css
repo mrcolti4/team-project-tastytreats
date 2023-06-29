@@ -100,7 +100,7 @@
 
 .rating {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   font-size: 18px;
   gap: 4px;
 }
