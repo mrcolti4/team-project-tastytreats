@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { markUpRating } from './ratings';
-import { showPagination } from './pagination';
+import { finallInitPage } from './pop-up';
 
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
@@ -126,3 +126,13 @@ async function showRecipes(url, params = {}) {
 showRecipes(URL, { limit: limitCount });
 
 export { showRecipes };
+
+recipeList.addEventListener('click', e => {
+  const refLI = e.target.closest('.cards__item');
+  try {
+    let is = refLI.nodeName;
+  } catch (error) {
+    return;
+  }
+  finallInitPage(refLI.dataset.id);
+});
