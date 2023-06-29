@@ -15,6 +15,7 @@ function sliderStart () {
       slidesToScroll: 3,
       autoplay: false,
       autoplaySpeed: 6000,
+      adaptiveHigth: true,
      
      
       
@@ -60,7 +61,7 @@ function renderSlider(arrEvents) {
      
     </div>
 
-    <div class="item-finally">
+    <div class="slider-item-finally">
       <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
     </div>
     

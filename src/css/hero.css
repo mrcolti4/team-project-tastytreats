@@ -34,7 +34,28 @@
   margin-bottom: 48px;
 }
 /* Слайдер */
+.slider-item-cook {
 
+}
+
+.slider .slider-item-cook  img {
+  width: 200px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.slider .slider-item-topic  img {
+  width: 200px;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+
+.slider .slider-item-finally  img {
+  width: 200px;
+  object-fit: contain;
+  border-radius: 15px;
+}
 
 
 /* slick */
@@ -44,18 +65,18 @@
   height: 302px;
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+justify-content: center;
 
   gap: 8px;
 
   min-width: 0;
+  overflow: hidden;
 }
 .slick-slide img {
-  object-fit: contain;
- width: 280px;
+
+ 
   display: block;
-  border-radius: 15px;
+  
 }
 
 .slick-list {
