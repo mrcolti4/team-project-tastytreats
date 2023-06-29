@@ -5,10 +5,11 @@
   bottom: 0;
   right: 0;
   z-index: 1;
-  overflow: hidden;
-  visibility: visible;
-  display: none;
-  opacity: 1;
+
+  /* overflow: hidden; */
+  visibility: hidden;
+  opacity: 0;
+
   background: rgba(0, 0, 0, 0.2);
   transition: opacity 500ms ease, visibility 500ms ease;
 }
@@ -16,22 +17,28 @@
 .backdrop.active {
   visibility: visible;
   opacity: 1;
+  overflow-y: auto;
+}
+.YouTube-iframe {
+  width: 100%;
 }
 
 .modal {
   width: 335px;
-  max-height: 1171px;
-  background-color: white;
-  padding: 40px 20px;
+  background-color: var(--bgc-background);
+  padding: 0px 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
   border-radius: 15px;
   /* position: relative; */
   position: absolute;
-  top: 50%;
+  top: 5%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-  /* visibility: hidden;
-    opacity: 0; */
+  transform: translate(-50%);
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
   /* z-index: 30;  
     position: fixed; */
 }
@@ -39,6 +46,10 @@
 .modal.active {
   visibility: visible;
   opacity: 1;
+}
+.icon-close.trailer {
+  stroke: #f1f1f1;
+  fill: #f1f1f1;
 }
 .modal-close-btn {
   position: absolute;
@@ -76,13 +87,14 @@
   border: 1px solid var(--main-color);
   border-radius: 15px;
   cursor: pointer;
+  background-color: var(--main-color);
+  color: var(--light-text-color);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-add:hover,
 .btn-add:focus {
-  background-color: var(--main-color);
-  color: #fff;
+  color: var(--primary-text-color);
   border: 1px solid var(--main-color);
 }
 
@@ -97,13 +109,27 @@
   font-size: 18px;
   line-height: 1.22;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 /* .text-cook {
     height: 161px;
 } */
+.container-video {
+  position: relative;
+}
+.poster-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
 
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: var(--primary-text-color-02);
+
+  cursor: pointer;
+}
 .cooking-recipes {
   font-weight: 400;
   font-size: 14px;
@@ -111,7 +137,6 @@
   margin-bottom: 40px;
   margin-top: 26px;
   width: 295px;
-  height: 162px;
 }
 
 .recipes-subtitle {
@@ -143,7 +168,7 @@
 }
 
 .recipes-container {
-  height: 224px;
+  /* height: 224px; */
 }
 
 .modal-rating {
@@ -156,7 +181,6 @@
 
 .recipes-poster {
   position: relative;
-  margin-bottom: 20px;
 }
 
 .poster {
@@ -164,11 +188,31 @@
   height: 357px;
   border-radius: 5px;
 }
+.youTube-BTN {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
 
+  background-color: transparent;
+  border: none;
+}
+.youTube-icon {
+  stroke: var(--light-text-color);
+  transition: transform var(--transition-set);
+}
+.youTube-icon:hover {
+  stroke: var(--input-label-error);
+  transform: scale(1.5);
+}
+.recipes-hashtags {
+  margin-top: 40px;
+}
 .hashtags-list {
   display: flex;
   gap: 8px;
-  padding-top: 40px;
+  flex-wrap: wrap;
 }
 .hashtags {
   font-family: 'Inter', sans-serif;
@@ -184,15 +228,79 @@
   display: flex;
   align-items: baseline;
   margin-bottom: 18px;
+  gap: 16px;
+}
+.rating__value.detail {
+  color: var(--primary-text-color-05);
+}
+.trailer-box {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%);
+
+  width: 100%;
+
+  pointer-events: none;
+  opacity: 0;
+}
+.trailer-box.active {
+  pointer-events: initial;
+  opacity: 1;
+  z-index: 1;
+}
+.tiezer-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.tiezer {
+  height: 300px;
 }
 
+.recipes {
+  display: block;
+  width: 295px;
+
+  height: 295px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.recipes-information {
+  margin-top: 20px;
+}
 @media screen and (min-width: 768px) {
+  .recipes-hashtags {
+    margin-top: 16px;
+  }
+  .recipes-subtitle {
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+  .poster-overlay {
+    height: 300px;
+  }
+  .tiezer {
+    height: 380px;
+  }
   .modal {
     width: 685px;
   }
   .btn-add {
     width: 156px;
     height: 45px;
+  }
+
+  .recipes-title {
+    margin-bottom: 16px;
   }
   .cooking-recipes {
     width: 621px;
@@ -204,10 +312,11 @@
   }
   .recipes-information {
     width: 238px;
+    margin-left: 32px;
+    margin-top: 0px;
   }
   .recipes {
     width: 332px;
-    margin-right: 34px;
     height: 300px;
   }
   .modal {

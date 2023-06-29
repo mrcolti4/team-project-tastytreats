@@ -58,6 +58,9 @@
   transition: opacity var(--transition-set);
 }
 
+.input-field::placeholder {
+  color: var(--primary-text-color-03);
+}
 /* VALID */
 .input-field:not(:placeholder-shown):valid:required {
   border-color: var(--input-label-correct);

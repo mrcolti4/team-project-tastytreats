@@ -1,9 +1,9 @@
 const refs = {
     openModalBtn: document.querySelector('.shopping-link'),
+    openModalBtnHero: document.querySelector('.btn-hero'),
     closeModalBtn: document.querySelector('.order-modal-close-btn'),
     backdrop: document.querySelector('.backdrop-order'),
     modal: document.querySelector('.modal-order'),
-    openModalBtnHero: document.querySelector('.btn-hero'),
     forma: document.querySelector('.modal-form-order'),
 }
 
@@ -38,7 +38,7 @@ function openModalOpen() {
 function closeModalClose() {
     document.body.classList.remove('overflowHidden');
     window.removeEventListener('keydown', onEscPress);
-    document.body.style.overflow = 'auto';
+    document.body.classList.remove('overflowHidden');
     refs.backdrop.classList.remove('active');
     refs.modal.classList.remove('active');
 }
