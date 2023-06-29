@@ -20,7 +20,7 @@
 
 .modal-order {
   width: 335px;
-  background-color: var(--bgc-background);
+  background-color: var(--bgc-CH-background);
   padding: 28px 20px;
   border-radius: 15px;
 
@@ -55,8 +55,7 @@
 .order-icon-close {
   display: inline-block;
   stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
+  stroke: var(--primary-text-CH-color);
 }
 
 .order-icon-close:hover,
@@ -82,7 +81,7 @@
 .order-btn:hover,
 .order-btn:focus {
   background-color: var(--main-color);
-  color: var(--primary-text-color);
+  color: var(--primary-text-CH-color);
   border: 1px solid var(--main-color);
 }
 
@@ -92,7 +91,7 @@
   line-height: calc(22 / 18);
   display: block;
   text-transform: uppercase;
-
+  color: var(--primary-text-CH-color);
   margin-bottom: 54px;
 }
 .contact-field-wrapper {

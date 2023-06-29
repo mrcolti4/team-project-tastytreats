@@ -10,14 +10,14 @@
   font-size: 14px;
   line-height: calc(18 / 14);
   display: block;
-  color: var(--primary-text-color-05);
+  color: var(--primary-text-CH-color-05);
 
   transition: color var(--transition-set);
 }
 
 .input-field {
   display: block;
-  border: 1px solid var(--primary-text-color-02);
+  border: 1px solid var(--primary-text-CH-color-02);
   border-radius: 15px;
   font-weight: 500;
   font-size: 14px;
@@ -25,6 +25,7 @@
   /* Питання по бордеру 10 чи 9 */
   padding: 9px 26px 9px 11px;
   color: var(--primary-text-color);
+  background-color: var(--bgc-CH-background);
 
   width: 100%;
   outline: none;

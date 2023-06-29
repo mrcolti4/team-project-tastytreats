@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--bgc-background);
+  background-color: var(--bgc-CH-background);
 }
 body.overflowHidden {
   overflow: hidden;

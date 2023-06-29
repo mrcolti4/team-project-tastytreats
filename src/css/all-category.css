@@ -1,8 +1,8 @@
 .all-categories-btn {
   margin-bottom: 24px;
   font-size: 18px;
-  color: var(--primary-text-color-05);
-  border-color: var(--primary-text-color-02);
+  color: var(--primary-text-CH-color-05);
+  border-color: var(--primary-text-CH-color-02);
   padding-left: 29px;
   padding-right: 29px;
 }
@@ -31,7 +31,7 @@
 .all-categories-item-btn {
   border: none;
   background: none;
-  color: var(--primary-text-color-03);
+  color: var(--primary-text-CH-color-03);
   font-size: 14px;
   font-weight: 500;
   line-height: calc(18 / 14);
