@@ -2,10 +2,7 @@ let $ = require('jquery');
 
 // Налаштування слайдеру
 
-
-
-
-function sliderStart () {
+function sliderStart() {
   $(document).ready(function () {
     $('.slider').slick({
       variableWidth: true,
@@ -15,15 +12,9 @@ function sliderStart () {
       slidesToScroll: 3,
       autoplay: false,
       autoplaySpeed: 6000,
-    
-     
-     
-      
     });
   });
-  
 }
-
 
 // Пошук елемента DOM
 const refs = {
@@ -78,16 +69,9 @@ function renderSlider(arrEvents) {
 
 // Виконую запит, та роблю розмітку.
 
-
-
-
 async function start() {
   const data = await fetchEvents();
-  sliderStart()
-  renderSlider(data)
+  sliderStart();
+  renderSlider(data);
 }
-start()
-
-
-
- 
+start();

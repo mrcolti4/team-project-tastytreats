@@ -110,17 +110,13 @@
 }
 
 .slider-item-finally img {
-
-
-
- 
   background: #050505;
-  width: 663px;
-  height: 663px;
+  width: 529px;
+  height: 529px;
 
-object-position: -120px -100px;
+  object-position: -170px -145px;
 
-object-fit:cover;
+  object-fit: cover;
 }
 
 /* slick */
@@ -195,10 +191,20 @@ object-fit:cover;
     width: 351px;
     height: 442px;
   }
- 
+
   .slider-item-topic img {
     width: 304px;
     height: 271px;
+  }
+
+  .slider-item-finally img {
+    background: #050505;
+    width: 663px;
+    height: 663px;
+
+    object-position: -120px -125px;
+
+    object-fit: cover;
   }
 }
 
