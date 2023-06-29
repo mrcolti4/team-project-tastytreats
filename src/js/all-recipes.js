@@ -1,12 +1,32 @@
 import axios from 'axios';
 import { markUpRating } from './ratings';
+import { finallInitPage } from './pop-up';
 
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
+const windowWidth = document.documentElement.clientWidth;
+let limitCount = 0;
+if (windowWidth < 768) {
+  limitCount = 6;
+} else if (windowWidth > 768 && windowWidth < 1280) {
+  limitCount = 8;
+} else if (windowWidth > 1280) {
+  limitCount = 9;
+}
 
-function generateMarkup({ title, description, preview, rating }) {
+export async function getRecipesData(url = URL, params) {
+  const { perPage, totalPages } = await getAllRecipes(url, params);
+
+  return { perPage, totalPages };
+}
+
+function clearRecipeList() {
+  recipeList.innerHTML = '';
+}
+
+function generateMarkup({ _id, title, description, preview, rating }) {
   return `
-    <li class="cards__item items-set">
+    <li class="cards__item items-set" data-id="${_id}">
     <img src="${preview}" alt="${title}" class="cards__img" />
     <svg class="cards__heart" width="19" height="17">
       <use href="./images/sprite.svg#icon-heart"></use>
@@ -87,18 +107,32 @@ async function getAllRecipes(url, params = {}) {
   return response.data;
 }
 
-async function createRecipeList(params = {}) {
-  const { results } = await getAllRecipes(URL, params);
+async function createRecipeList(url, params = {}) {
+  const { results } = await getAllRecipes(url, params);
+
   return results.reduce(
     (markup, currentRecipe) => markup + generateMarkup(currentRecipe),
     ''
   );
 }
 
-async function showRecipes(params = {}) {
-  const recipes = await createRecipeList(params);
+async function showRecipes(url, params = {}) {
+  const recipes = await createRecipeList(url, params);
+  clearRecipeList();
   recipeList.insertAdjacentHTML('beforeend', recipes);
   markUpRating();
 }
 
-showRecipes({ limit: 9 });
+showRecipes(URL, { limit: limitCount });
+
+export { showRecipes };
+
+recipeList.addEventListener('click', e => {
+  const refLI = e.target.closest('.cards__item');
+  try {
+    let is = refLI.nodeName;
+  } catch (error) {
+    return;
+  }
+  finallInitPage(refLI.dataset.id);
+});

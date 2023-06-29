@@ -6,6 +6,10 @@ function initRating(rating) {
   initValues(rating);
   // Рахуємо відсоток заповненого рейтингу
   const ratingActiveWidth = ratingValue.innerHTML / 0.05;
+  if (ratingActiveWidth > 100) {
+    ratingActive.style.width = `100%`;
+    return;
+  }
   ratingActive.style.width = `${ratingActiveWidth}%`;
 }
 
