@@ -1,0 +1,8 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="icon-youtube" viewBox="0 0 32 32">
+<path fill="none" stroke="#f8f8f8" style="stroke: var(--color1, #f8f8f8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6842" d="M30.053 8.56c-0.158-0.633-0.481-1.213-0.935-1.681s-1.024-0.808-1.652-0.986c-2.293-0.56-11.467-0.56-11.467-0.56s-9.173 0-11.467 0.613c-0.628 0.178-1.197 0.518-1.652 0.986s-0.777 1.048-0.935 1.681c-0.42 2.327-0.625 4.688-0.613 7.053-0.015 2.383 0.19 4.762 0.613 7.107 0.175 0.613 0.504 1.171 0.958 1.619s1.014 0.772 1.629 0.941c2.293 0.613 11.467 0.613 11.467 0.613s9.173 0 11.467-0.613c0.628-0.178 1.197-0.518 1.652-0.986s0.777-1.048 0.935-1.681c0.416-2.31 0.622-4.653 0.613-7 0.015-2.383-0.19-4.762-0.613-7.107z"></path>
+<path fill="none" stroke="#f8f8f8" style="stroke: var(--color1, #f8f8f8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.6842" d="M13 20.027l7.667-4.36-7.667-4.36v8.72z"></path>
+</symbol>
+</defs>
+</svg>

@@ -26,7 +26,10 @@
 .modal {
   width: 335px;
   background-color: var(--bgc-background);
-  padding: 40px 20px;
+  padding: 0px 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
   border-radius: 15px;
   /* position: relative; */
   position: absolute;
@@ -115,6 +118,16 @@
   position: relative;
 }
 .poster-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: var(--primary-text-color-02);
+
+  cursor: pointer;
 }
 .cooking-recipes {
   font-weight: 400;
@@ -167,7 +180,6 @@
 
 .recipes-poster {
   position: relative;
-  margin-bottom: 16px;
 }
 
 .poster {
@@ -175,10 +187,30 @@
   height: 357px;
   border-radius: 5px;
 }
+.youTube-BTN {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+
+  background-color: transparent;
+  border: none;
+}
+.youTube-icon {
+  stroke: var(--light-text-color);
+  transition: transform var(--transition-set);
+}
+.youTube-icon:hover {
+  stroke: var(--input-label-error);
+  transform: scale(1.5);
+}
 
 .hashtags-list {
   display: flex;
   gap: 8px;
+
+  margin-top: 16px;
 }
 .hashtags {
   font-family: 'Inter', sans-serif;
@@ -227,7 +259,21 @@
   height: 200px;
 }
 
+.recipes {
+  display: block;
+  width: 295px;
+
+  height: 295px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.recipes-information {
+  margin-top: 20px;
+}
 @media screen and (min-width: 768px) {
+  .poster-overlay {
+    height: 300px;
+  }
   .tiezer {
     height: 380px;
   }
@@ -248,13 +294,12 @@
   }
   .recipes-information {
     width: 238px;
+    margin-left: 32px;
+    margin-top: 0px;
   }
   .recipes {
     width: 332px;
-    margin-right: 34px;
     height: 300px;
-    object-fit: cover;
-    border-radius: 8px;
   }
   .modal {
     padding: 32px 32px;
