@@ -109,7 +109,7 @@ function renderVIDEO(data) {
    <iframe
                 width="100%"
                 height="100%"
-                src="http://www.youtube.com/embed/${getKeyYouTybe(data.youtube)};
+                src="http://www.youtube.com/embed/${getKeyYouTybe(data.youtube)}"
 
 title = "YouTube video player"
 frameborder = "0"
