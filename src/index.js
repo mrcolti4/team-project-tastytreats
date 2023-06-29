@@ -20,3 +20,4 @@ import './js/order-now';
 import './js/btn-up';
 import './js/filters';
 import './js/favorites';
+import './js/service/filter/clear_input';

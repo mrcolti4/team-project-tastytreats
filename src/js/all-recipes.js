@@ -5,6 +5,14 @@ import { showPagination } from './pagination';
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
 const windowWidth = document.documentElement.clientWidth;
+let limitCount = 0;
+if (windowWidth < 768) {
+  limitCount = 6;
+} else if (windowWidth > 768 && windowWidth < 1280) {
+  limitCount = 8;
+} else if (windowWidth > 1280) {
+  limitCount = 9;
+}
 
 export async function getRecipesData(url = URL, params) {
   const { perPage, totalPages } = await getAllRecipes(url, params);
@@ -115,12 +123,6 @@ async function showRecipes(url, params = {}) {
   markUpRating();
 }
 
-if (windowWidth < 768) {
-  showRecipes(URL, { limit: 6 });
-} else if (windowWidth > 768 && windowWidth < 1280) {
-  showRecipes(URL, { limit: 8 });
-} else if (windowWidth > 1280) {
-  showRecipes(URL, { limit: 9 });
-}
+showRecipes(URL, { limit: limitCount });
 
 export { showRecipes };

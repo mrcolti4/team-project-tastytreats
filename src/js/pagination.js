@@ -5,6 +5,14 @@ import { showRecipes, getRecipesData } from './all-recipes';
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const container = document.getElementById('tui-pagination-container');
 const windowWidth = document.documentElement.clientWidth;
+let limitCount = 0;
+if (windowWidth < 768) {
+  limitCount = 6;
+} else if (windowWidth > 768 && windowWidth < 1280) {
+  limitCount = 8;
+} else if (windowWidth > 1280) {
+  limitCount = 9;
+}
 
 async function createPagination(url, params) {
   const { perPage, totalPages } = await getRecipesData(url, params);
@@ -41,25 +49,12 @@ async function createPagination(url, params) {
   paginationP.getCurrentPage();
   paginationP.on('afterMove', event => {
     const currentPage = event.page;
-    if (windowWidth < 768) {
-      showRecipes(url, { page: currentPage, limit: 6 });
-    } else if (windowWidth > 768 && windowWidth < 1280) {
-      showRecipes(url, { page: currentPage, limit: 8 });
-    } else if (windowWidth > 1280) {
-      showRecipes(url, { page: currentPage, limit: 9 });
-    }
+    showRecipes(url, { ...params, page: currentPage, limit: limitCount });
   });
 }
 
 export function showPagination(url, params = {}) {
   container.innerHTML = '';
-  if (windowWidth < 768) {
-    createPagination(url, { ...params, limit: 9 });
-  } else if (windowWidth > 768 && windowWidth < 1280) {
-    createPagination(url, { ...params, limit: 9 });
-  } else if (windowWidth > 1280) {
-    createPagination(url, { ...params, limit: 9 });
-    console.log();
-  }
+  createPagination(url, { ...params, limit: limitCount });
 }
 showPagination(URL);

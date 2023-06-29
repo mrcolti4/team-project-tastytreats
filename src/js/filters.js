@@ -10,16 +10,36 @@ const filterRefs = {
   areaSelect: document.querySelector('.area-select'),
   ingredientSelect: document.querySelector('.ingredients-select'),
 };
+const windowWidth = document.documentElement.clientWidth;
+let limitCount = 0;
+if (windowWidth < 768) {
+  limitCount = 6;
+} else if (windowWidth > 768 && windowWidth < 1280) {
+  limitCount = 8;
+} else if (windowWidth > 1280) {
+  limitCount = 9;
+}
+
+export async function onEmptyInput() {
+  await showRecipes(`${BASE_URL}/recipes`, { limit: limitCount });
+  await showPagination(`${BASE_URL}/recipes`, { limit: limitCount });
+}
 
 async function searchRecipe(e) {
   const input = e.target;
   if (input.value.trim() !== '') {
-    await showRecipes(`${BASE_URL}/recipes`, { title: input.value });
-    await showPagination(`${BASE_URL}/recipes`, { title: input.value });
+    await showRecipes(`${BASE_URL}/recipes`, {
+      limit: limitCount,
+      title: input.value,
+    });
+    await showPagination(`${BASE_URL}/recipes`, {
+      limit: limitCount,
+      title: input.value,
+    });
     return;
   }
-  await showRecipes(`${BASE_URL}/recipes`, { limit: 9 });
-  await showPagination(`${BASE_URL}/recipes`, { limit: 9 });
+
+  onEmptyInput();
 }
 
 async function getAreas(api) {

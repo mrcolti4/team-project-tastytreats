@@ -41,6 +41,7 @@
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
+  cursor: pointer;
 }
 .svg-serch-clous.active {
   stroke: rgba(5, 5, 5, 0.8);
