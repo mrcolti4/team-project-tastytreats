@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { markUpRating } from './ratings';
+import { showPagination } from './pagination';
 
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
 const windowWidth = document.documentElement.clientWidth;
 
-export async function getRecipesData(params) {
-  const { perPage, totalPages } = await getAllRecipes(URL, params);
+export async function getRecipesData(url = URL, params) {
+  const { perPage, totalPages } = await getAllRecipes(url, params);
 
   return { perPage, totalPages };
 }
@@ -98,8 +99,8 @@ async function getAllRecipes(url, params = {}) {
   return response.data;
 }
 
-async function createRecipeList(params = {}) {
-  const { results } = await getAllRecipes(URL, params);
+async function createRecipeList(url, params = {}) {
+  const { results } = await getAllRecipes(url, params);
 
   return results.reduce(
     (markup, currentRecipe) => markup + generateMarkup(currentRecipe),
@@ -107,19 +108,19 @@ async function createRecipeList(params = {}) {
   );
 }
 
-async function showRecipes(params = {}) {
-  const recipes = await createRecipeList(params);
+async function showRecipes(url, params = {}) {
+  const recipes = await createRecipeList(url, params);
   clearRecipeList();
   recipeList.insertAdjacentHTML('beforeend', recipes);
   markUpRating();
 }
 
 if (windowWidth < 768) {
-  showRecipes({ limit: 6 });
+  showRecipes(URL, { limit: 6 });
 } else if (windowWidth > 768 && windowWidth < 1280) {
-  showRecipes({ limit: 8 });
+  showRecipes(URL, { limit: 8 });
 } else if (windowWidth > 1280) {
-  showRecipes({ limit: 9 });
+  showRecipes(URL, { limit: 9 });
 }
 
 export { showRecipes };

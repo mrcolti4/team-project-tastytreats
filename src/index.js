@@ -1,6 +1,5 @@
 import './js/slider';
 
-
 //Header---------------------
 
 import './js/header-script';
@@ -16,7 +15,8 @@ import './js/popular';
 import './js/service/pop-up';
 import './js/pagination';
 import './js/scheme';
-import './js/pop-up'
-import './js/order-now'
-import './js/btn-up'
-
+import './js/pop-up';
+import './js/order-now';
+import './js/btn-up';
+import './js/filters';
+import './js/favorites';
