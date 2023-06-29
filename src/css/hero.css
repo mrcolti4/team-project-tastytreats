@@ -35,8 +35,40 @@
 }
 /* Слайдер */
 
-.slider img {
+.slider-item-cook img {
+  width: 80px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.slider-item-topic {
+  position: relative;
+
   width: 200px;
+  height: 280px;
+  background-color: #050505;
+  border-radius: 15px;
+}
+.slider-item-topic img {
+  width: 157px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+ 
+}
+
+
+.slider-item-finally {
+}
+
+.slider-item-finally img {
+  width: 200px;
+  height: 280px;
+  object-fit: cover;
   border-radius: 15px;
 }
 
@@ -103,9 +135,7 @@
     margin-bottom: 32px;
   }
 
-  .slider {
-    width: 871px;
-  }
+ 
 }
 
 @media screen and (min-width: 1280px) {

@@ -56,7 +56,7 @@ function renderSlider(arrEvents) {
     <img src="${event.cook.imgUrl}" alt="${event.cook.name}">
     </div>
 
-    <div class="slider-item-topic">
+    <div class="slider-item-topic bcg">
       <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
      
     </div>
