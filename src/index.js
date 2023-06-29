@@ -18,4 +18,5 @@ import './js/pagination';
 import './js/scheme';
 import './js/pop-up'
 import './js/order-now'
+import './js/loader'
 

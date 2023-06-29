@@ -7,8 +7,8 @@
   z-index: 1;
 
   /* overflow: hidden; */
-  visibility: visible;
-  opacity: 1;
+  visibility: hidden;
+  opacity: 0;
 
   background: rgba(0, 0, 0, 0.2);
   transition: opacity 500ms ease, visibility 500ms ease;
@@ -108,7 +108,7 @@
   font-size: 18px;
   line-height: 1.22;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 /* .text-cook {
@@ -283,6 +283,10 @@
   .btn-add {
     width: 156px;
     height: 45px;
+  }
+
+  .recipes-title {
+    margin-bottom: 16px;
   }
   .cooking-recipes {
     width: 621px;

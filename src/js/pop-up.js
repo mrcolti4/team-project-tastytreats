@@ -1,5 +1,5 @@
+import { Loader } from './loader'
 
-fetchRecipeById('6462a8f74c3d0ddd28897feb');
 let refs = {
   closeVideo: document.querySelector('.tiezer-close-btn'),
   tiezer: document.querySelector('.tiezer'),
@@ -9,8 +9,9 @@ let refs = {
   video: document.querySelector('iframe'),
   title: document.querySelector('.js-title'),
   time: document.querySelector('.js-minute'),
+  modalRecipe: document.querySelector('.js-modal-recipe'),
+  backdropRecipe: document.querySelector('.js-backdrop-recipe'),
 };
-let data1;
 
 
 
@@ -32,6 +33,21 @@ $(document).ready(function () {
   });
 });
 
+function RenderCardInfoRecipe(id) {
+  // Loader.Start();
+
+  fetchRecipeById('6462a8f74c3d0ddd28897feb');
+  setTimeout(() => {
+    refs.backdropRecipe.classList.add('active');
+    refs.modalRecipe.classList.add('active');
+  }, 100)
+
+}
+
+setTimeout(() => {
+  RenderCardInfoRecipe(111);
+}, 1000)
+
 
 function getRefs() {
   return {
@@ -48,7 +64,7 @@ async function fetchRecipeById(id) {
 
   // renderModalRecipe(data);
   // refs = getRefs();
-  data1 = data;
+
   renderIMG(data);
   renderVIDEO(data)
   renderTitle(data);
@@ -101,7 +117,8 @@ title = "YouTube video player"
 frameborder = "0"
 allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 allowfullscreen
-  ></iframe > `;
+  ></iframe >
+`;
   refs.tiezer.insertAdjacentHTML('beforeend', markUp);
 }
 
