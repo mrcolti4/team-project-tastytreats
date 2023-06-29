@@ -51,7 +51,7 @@
   border-radius: 15px;
 }
 .slider-item-topic img {
-  width: 157px;
+  width: 150px;
   
   position: absolute;
   top: 50%;
@@ -60,9 +60,13 @@
 
  
 }
-
+.slider {
+  width: 497px;
+}
 
 .slider-item-finally {
+  width: 222px;
+  height: 280px;
 }
 
 .slider-item-finally img {
@@ -75,17 +79,17 @@
 /* slick */
 
 .slick-track {
-  width: 496px;
-  height: 302px;
+ 
+
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  gap: 8px;
+gap: 8px;
 
   min-width: 0;
-  overflow: hidden;
+  
 }
 .slick-slide img {
   display: block;

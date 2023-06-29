@@ -52,19 +52,21 @@ function renderSlider(arrEvents) {
       return `
 
       
-    <div class="slider-item-cook" >
-    <img src="${event.cook.imgUrl}" alt="${event.cook.name}">
-    </div>
-
-    <div class="slider-item-topic bcg">
-      <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
-     
-    </div>
-
-    <div class="slider-item-finally">
-      <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
-    </div>
-    
+      <div class="slider-item-cook" >
+      <img src="${event.cook.imgUrl}" alt="${event.cook.name}">
+      </div>
+      
+      <div class="slider-item-topic bcg">
+        <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
+        <p class="description">${event.topic.name}</p>
+        <p class="country">${event.topic.area}</p>
+      </div>
+      
+      <div class="slider-item-finally">
+        <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
+      </div>
+      
+   
     
        
         `;
@@ -89,5 +91,3 @@ start()
 
 
  
-{/* <p class="description">${event.topic.name}</p>
-<p class="country">${event.topic.area}</p>  */}
