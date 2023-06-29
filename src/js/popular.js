@@ -45,14 +45,21 @@ popularFetchAndRender();
 
 
 refs.list.addEventListener('click', (e) => {
+    const refLI = e.target.closest('.popular-item');
     try {
-        let is = e.target.closest('.popular-item').nodeName;
+        let is = refLI.nodeName;
     } catch (error) {
         return;
     }
-    const id = e.target.closest('.popular-item').dataset.id
-    finallInitPage(id)
-    console.log(e.target.closest('.popular-item').dataset.id);
-
+    finallInitPage(refLI.dataset.id);
+})
+refs.list_mobile.addEventListener('click', (e) => {
+    const refLI = e.target.closest('.popular-item');
+    try {
+        let is = refLI.nodeName;
+    } catch (error) {
+        return;
+    }
+    finallInitPage(refLI.dataset.id);
 })
 

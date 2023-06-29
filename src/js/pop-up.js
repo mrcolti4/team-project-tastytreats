@@ -20,9 +20,9 @@ let refs = {
 };
 
 // Запуск по кліку
-setTimeout(() => {
-  finallInitPage('6462a8f74c3d0ddd28897fc1');
-}, 2000)
+// setTimeout(() => {
+//   finallInitPage('6462a8f74c3d0ddd28897fc1');
+// }, 2000)
 
 
 // /** Відкриття та закриття модального вікна */
@@ -117,7 +117,7 @@ allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; p
 allowfullscreen
   ></iframe >
 `;
-  refs.tiezer.insertAdjacentHTML('beforeend', markUp);
+  refs.tiezer.innerHTML = markUp;
 }
 function renderRanting(data) {
   let markupR = `
@@ -159,7 +159,7 @@ function renderRanting(data) {
             </div>
           </div>
         </div>`;
-  refs.ratingBox.insertAdjacentHTML('beforeend', markupR);
+  refs.ratingBox.innerHTML = markupR;
 }
 function renderIngridient(data) {
   const markup = data.ingredients.map(({ measure, name }) => {
@@ -169,7 +169,7 @@ function renderIngridient(data) {
               </li>`
   }).join('');
 
-  refs.IngredientBox.insertAdjacentHTML('beforeend', markup);
+  refs.IngredientBox.innerHTML = markup;
 }
 function renderHashtags(data) {
   if (data.tags.length === 0) {
@@ -179,7 +179,7 @@ function renderHashtags(data) {
     return ` <li class="hashtags">#${tag}</li>`
   }).join('');
 
-  refs.hashtagsBox.insertAdjacentHTML('beforeend', markup);
+  refs.hashtagsBox.innerHTML = markup;
 }
 function renderText(data) {
   refs.preview.src = data.preview;
