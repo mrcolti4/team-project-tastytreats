@@ -8,14 +8,14 @@ let $ = require('jquery');
 function sliderStart () {
   $(document).ready(function () {
     $('.slider').slick({
-      variableWidth: true,
+      
       arrows: false,
       dots: true,
       slidesToShow: 3,
       slidesToScroll: 3,
       autoplay: false,
       autoplaySpeed: 6000,
-      adaptiveHigth: true,
+    
      
      
       
@@ -76,8 +76,7 @@ function renderSlider(arrEvents) {
 
 // Виконую запит, та роблю розмітку.
 
-{/* <p class="description">${event.topic.name}</p>
-<p class="country">${event.topic.area}</p> */}
+
 
 
 async function start() {
@@ -86,3 +85,9 @@ async function start() {
   renderSlider(data)
 }
 start()
+
+
+
+ 
+{/* <p class="description">${event.topic.name}</p>
+<p class="country">${event.topic.area}</p>  */}
