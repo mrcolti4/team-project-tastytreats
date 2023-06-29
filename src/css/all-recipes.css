@@ -75,6 +75,8 @@
   line-height: calc(18 / 14);
   text-transform: uppercase;
   margin-bottom: 8px;
+
+  color: var(--primary-text-CH-color-CardTitle-Description);
 }
 
 .cards__text {
@@ -85,6 +87,8 @@
   font-size: 12px;
   line-height: calc(16 / 12);
   margin-bottom: 16px;
+
+  color: var(--primary-text-CH-color-CardTitle-Description);
 }
 
 .cards__info {
@@ -112,7 +116,7 @@
 .rating__body::before {
   content: '★★★★★';
   display: block;
-  color: #f8f8f8 1a;
+  color: var(--primary-text-CH-color-STARS);
   font-size: 18px;
 }
 
@@ -151,4 +155,5 @@
   font-size: 14px;
   font-weight: 500;
   line-height: calc(18 / 14);
+  color: var(--primary-text-CH-color-RATING);
 }
