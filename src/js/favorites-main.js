@@ -1,4 +1,4 @@
-const categoriesList = document.querySelector('.category-button-list');
+const buttonsContainer = document.querySelector('.category-button-wrap');
 const favoriteCards = document.querySelector('.cards__list.card-set');
 const noRecipeBox = document.querySelector('.no-recipe-box');
 
@@ -74,27 +74,35 @@ const localStorageDB = [
 const categories = [];
 
 if (localStorageDB.length > 0) {
-  markupFavotiteBtn(localStorageDB);
-  markupFavotiteCard(localStorageDB);
+  markupFavoriteBtn(localStorageDB);
+  markupFavoriteCard(localStorageDB);
 } else {
   noRecipeBox.classList.remove('visually-hidden');
 }
 
-function markupFavotiteBtn(localStorageDB) {
-  localStorageDB.forEach(element => {
+buttonsContainer.addEventListener('click', changeActiveClassMenuButtons);
+buttonsContainer.addEventListener('click', onFilter);
+
+function markupFavoriteBtn(data) {
+  data.forEach(element => {
     if (!categories.includes(element.category)) {
       categories.push(element.category);
     }
   });
+  buttonsContainer.insertAdjacentHTML(
+    'afterbegin',
+    createMarkupFavotiteBtn('All Categories')
+  );
+  buttonsContainer.firstElementChild.classList.add('active');
   const murkup = categories
     .map(element => createMarkupFavotiteBtn(element))
     .join('');
   //   return categories;
-  categoriesList.insertAdjacentHTML('afterbegin', murkup);
+  buttonsContainer.insertAdjacentHTML('beforeend', murkup);
 }
 
-function markupFavotiteCard(localStorageDB) {
-  const markup = localStorageDB.reduce(
+function markupFavoriteCard(data) {
+  const markup = data.reduce(
     (markup, currentCard) => markup + createMarkupFavoriteCard(currentCard),
     ''
   );
@@ -103,11 +111,7 @@ function markupFavotiteCard(localStorageDB) {
 
 function createMarkupFavotiteBtn(category) {
   return `
-  <li class="category-button-item">
-    <button type="button" class="category-button-button btn">
-        ${category}
-    </button>
-    </li>
+    <button type="button" class="category-button-button btn">${category}</button>
     `;
 }
 
@@ -175,56 +179,24 @@ function createMarkupFavoriteCard({
 </li>`;
 }
 
-// `<li class="cards__item items-set fav-set">
-//         <img src="${data.preview}" alt="" class="cards__img" />
-//         <svg class="cards__heart" width="19" height="17">
-//           <use href="./images/sprite.svg#icon-heart"></use>
-//         </svg>
-//         <div class="cards__descr">
-//           <h4 class="cards__title">${data.title}</h4>
-//           <p class="cards__text">
-//             ${data.description}
-//           </p>
-//           <div class="cards__info">
-//             <div class="cards__rating rating">
-//               <div class="rating__value">5</div>
-//               <div class="rating__body">
-//                 <div class="rating__active"></div>
-//                 <div class="rating__items">
-//                   <input
-//                     type="radio"
-//                     class="rating__item"
-//                     name="rating"
-//                     value="1"
-//                   />
-//                   <input
-//                     type="radio"
-//                     class="rating__item"
-//                     name="rating"
-//                     value="2"
-//                   />
-//                   <input
-//                     type="radio"
-//                     class="rating__item"
-//                     name="rating"
-//                     value="3"
-//                   />
-//                   <input
-//                     type="radio"
-//                     class="rating__item"
-//                     name="rating"
-//                     value="4"
-//                   />
-//                   <input
-//                     type="radio"
-//                     class="rating__item"
-//                     name="rating"
-//                     value="5"
-//                   />
-//                 </div>
-//               </div>
-//             </div>
-//             <button class="btn btn-primary cards__btn">See recipe</button>
-//           </div>
-//         </div>
-//       </li>`
+function changeActiveClassMenuButtons(e) {
+  for (let i = 0; i < e.currentTarget.children.length; i += 1) {
+    e.currentTarget.children[i].classList.remove('active');
+  }
+  e.target.classList.add('active');
+}
+
+function onFilter(e) {
+  const filterCategory = String(e.target.textContent);
+
+  if (filterCategory === 'All Categories') {
+    markupFavoriteCard(localStorageDB);
+  } else {
+    favoriteCards.innerHTML = '';
+    const testBase = [];
+    const newDatabase = localStorageDB.filter(
+      element => element.category === filterCategory
+    );
+    markupFavoriteCard(newDatabase);
+  }
+}
