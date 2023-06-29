@@ -3,6 +3,9 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bgc-CH-background);
+
+  transition: background-color var(--transition-set);
+  transition: color var(--transition-set);
 }
 body.overflowHidden {
   overflow: hidden;
