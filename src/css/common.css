@@ -3,11 +3,17 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bgc-CH-background);
+
+  transition: background-color var(--transition-set);
+  transition: color var(--transition-set);
 }
 body.overflowHidden {
   overflow: hidden;
 }
 
+main {
+  padding-bottom: 80px;
+}
 .page {
   overflow: hidden;
 }
@@ -20,6 +26,9 @@ body.overflowHidden {
 }
 
 @media screen and (min-width: 768px) {
+  main {
+    padding-bottom: 100px;
+  }
   .container {
     max-width: 768px;
     padding: 0 32px;
