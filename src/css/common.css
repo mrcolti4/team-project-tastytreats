@@ -7,6 +7,11 @@ body {
 body.overflowHidden {
   overflow: hidden;
 }
+
+.page {
+  overflow: hidden;
+}
+
 .container {
   min-width: 320px;
   max-width: 375px;
