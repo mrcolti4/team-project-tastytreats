@@ -1,7 +1,8 @@
 import { Loader } from './loader'
 import { markUpRating } from './ratings';
-
+// Всі посилання
 let refs = {
+  closeBtn: document.querySelector('.modal-close-btn'),
   closeVideo: document.querySelector('.tiezer-close-btn'),
   tiezer: document.querySelector('.tiezer'),
   trailerBox: document.querySelector('.trailer-box'),
@@ -18,70 +19,69 @@ let refs = {
   textContentBox: document.querySelector('.cooking-recipes'),
 };
 
+// Запуск по кліку
+setTimeout(() => {
+  finallInitPage('6462a8f74c3d0ddd28897fc1');
+}, 2000)
 
 
-const modalRecipe = document.querySelector('.js-modal-recipe');
 // /** Відкриття та закриття модального вікна */
-$(document).ready(function () {
-  $(".modal-close-btn").each(function () {
-
-    $(this).click(function () {
-      $(".modal").css("display", "none");
-      $(".backdrop").css("visibility", "hidden");
-    });
-  });
-  $(".cards__btn").each(function () {
-    $(this).click(function () {
-      $(".modal").css("display", "block");
-      $(".backdrop").css("visibility", "visible");
-    });
-  });
-});
-
-function RenderCardInfoRecipe(id) {
+refs.closeBtn.addEventListener('click', closeModalClose);
+refs.backdropRecipe.addEventListener('click', clickBackdropClick);
+function openModalOpen() {
   // Loader.Start();
-
-  fetchRecipeById(id);
   setTimeout(() => {
+    window.addEventListener('keydown', onEscPress);
+    document.body.classList.add('overflowHidden');
     refs.backdropRecipe.classList.add('active');
     refs.modalRecipe.classList.add('active');
-  }, 100)
-
+    // Loader.Stop();
+  }, 50)
 }
-
-setTimeout(() => {
-  RenderCardInfoRecipe('6462a8f74c3d0ddd28897fc1');
-}, 1000)
-
-
-function getRefs() {
-  return {
-    closeVideo: document.querySelector('.tiezer-close-btn'),
-    tiezer: document.querySelector('.tiezer'),
-    trailerBox: document.querySelector('.trailer-box'),
-
+function closeModalClose() {
+  window.removeEventListener('keydown', onEscPress);
+  document.body.classList.remove('overflowHidden');
+  refs.backdropRecipe.classList.remove('active');
+  refs.modalRecipe.classList.remove('active');
+}
+function clickBackdropClick(e) {
+  if (e.currentTarget === e.target) {
+    closeModalClose();
   }
 }
+function onEscPress(e) {
+  if (e.code === 'Escape') {
+    closeModalClose();
+  }
+}
+// /** Кінець Відкриття та закриття модального вікна */
+
+export function finallInitPage(id) {
+  fetchRecipeById(id).then(data => {
+
+    renderVIDEO(data)
+    renderRanting(data);
+    markUpRating();
+    renderIngridient(data);
+    renderHashtags(data);
+    renderText(data);
+
+    openModalOpen()
+  })
+}
+
+
 async function fetchRecipeById(id) {
   const resp = await fetch(`https://tasty-treats-backend.p.goit.global/api/recipes/${id}`);
   const data = await resp.json();
-
-
-  renderIMG(data);
-  renderVIDEO(data)
-  renderTitle(data);
-  renderRanting(data);
-  markUpRating();
-
-  renderIngridient(data);
-  renderHashtags(data);
-  renderText(data);
-
+  return data;
 }
 
+// YouTUBE module
+refs.closeVideo.addEventListener('click', stopVideos);
+refs.btnOpenYouTube.addEventListener('click', openPlayer);
 
-
-const stopVideos = () => {
+function stopVideos() {
   refs.trailerBox.classList.remove('active');
 
   document.querySelectorAll('iframe').forEach(video => {
@@ -92,22 +92,19 @@ const stopVideos = () => {
   });
 
 };
-
-refs.closeVideo.addEventListener('click', stopVideos);
-
-
-// YouTUBE module
-refs.btnOpenYouTube.addEventListener('click', openPlayer);
-
 function openPlayer() {
   refs.trailerBox.classList.add('active');
 }
+// end YouTUBE module
 
-function renderIMG(data) {
-  refs.preview.src = data.preview;
+//  Рендер частин сторінки
+function getKeyYouTybe(url) {
+  let indexLast = url.split('').length;
+
+  let key = url.split('').splice(32, indexLast).join('');
+  return key;
 }
 function renderVIDEO(data) {
-
   const markUp = `
    <iframe
                 width="100%"
@@ -122,18 +119,6 @@ allowfullscreen
 `;
   refs.tiezer.insertAdjacentHTML('beforeend', markUp);
 }
-
-function getKeyYouTybe(url) {
-  let indexLast = url.split('').length;
-
-  let key = url.split('').splice(32, indexLast).join('');
-  return key;
-}
-
-function renderTitle(data) {
-  refs.title.textContent = data.title;
-}
-
 function renderRanting(data) {
   let markupR = `
   <div class="cards__rating rating">
@@ -176,7 +161,6 @@ function renderRanting(data) {
         </div>`;
   refs.ratingBox.insertAdjacentHTML('beforeend', markupR);
 }
-
 function renderIngridient(data) {
   const markup = data.ingredients.map(({ measure, name }) => {
     return `<li class="recipes-subtitle">
@@ -187,7 +171,6 @@ function renderIngridient(data) {
 
   refs.IngredientBox.insertAdjacentHTML('beforeend', markup);
 }
-
 function renderHashtags(data) {
   if (data.tags.length === 0) {
     return;
@@ -198,8 +181,9 @@ function renderHashtags(data) {
 
   refs.hashtagsBox.insertAdjacentHTML('beforeend', markup);
 }
-
 function renderText(data) {
+  refs.preview.src = data.preview;
+  refs.title.textContent = data.title;
   refs.textContentBox.textContent = data.instructions;
   refs.time.textContent = data.time + " min";
 }

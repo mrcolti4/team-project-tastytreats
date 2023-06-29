@@ -1,9 +1,9 @@
 const refs = {
     openModalBtn: document.querySelector('.shopping-link'),
+    openModalBtnHero: document.querySelector('.btn-hero'),
     closeModalBtn: document.querySelector('.order-modal-close-btn'),
     backdrop: document.querySelector('.backdrop-order'),
     modal: document.querySelector('.modal-order'),
-    openModalBtnHero: document.querySelector('.btn-hero'),
     forma: document.querySelector('.modal-form-order'),
 }
 

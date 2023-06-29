@@ -1,3 +1,4 @@
+import { finallInitPage } from './pop-up'
 const refs = {
     list: document.querySelector('.popular-list'),
     list_mobile: document.querySelector('.popular-list.mobile'),
@@ -12,6 +13,7 @@ async function fetchPopular() {
 function renderPopular(arrayResp) {
     const markup = arrayResp.map(({ title, description, preview, _id }) => {
         return `
+        
          <li class="popular-item" data-id="${_id}">
       <div class="popular-wraper">
         <img
@@ -48,7 +50,9 @@ refs.list.addEventListener('click', (e) => {
     } catch (error) {
         return;
     }
-
+    const id = e.target.closest('.popular-item').dataset.id
+    finallInitPage(id)
     console.log(e.target.closest('.popular-item').dataset.id);
 
 })
+
