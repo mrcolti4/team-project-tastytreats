@@ -15,14 +15,22 @@
 }
 
 .all-categiries-list-container {
+  /* background-color: skyblue; */
+  scrollbar-base-color: red;
+}
+.all-categories-list {
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 18px;
   height: 198px;
-  /* background-color: skyblue; */
   overflow-y: scroll;
-  scrollbar-base-color: red;
+}
+@media screen and (min-width: 768px) {
+  .all-categories-list {
+    height: 416px;
+    gap: 24px;
+  }
 }
 
 /* .all-categiries-list-container::-webkit-scrollbar {
