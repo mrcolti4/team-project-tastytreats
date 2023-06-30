@@ -1,9 +1,6 @@
 import './js/slider';
 import './js/slick.min';
 
-
-
-
 import './js/header-mobile-menu';
 
 import './js/ratings';
@@ -19,5 +16,5 @@ import './js/pop-up';
 import './js/order-now';
 import './js/btn-up';
 import './js/filters';
-import './js/favorites';
+import './js/addToFavorites';
 import './js/service/filter/clear_input';

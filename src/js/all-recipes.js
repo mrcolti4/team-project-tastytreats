@@ -2,10 +2,13 @@ import axios from 'axios';
 import { markUpRating } from './ratings';
 import { finallInitPage } from './pop-up';
 import localctorage from './localctorage';
+import { onEmptyResult } from './filters';
+import { MessageApi } from './service/message-api';
 
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
 const windowWidth = document.documentElement.clientWidth;
+
 let limitCount = 0;
 if (windowWidth < 768) {
   limitCount = 6;
@@ -129,17 +132,23 @@ async function getAllRecipes(url, params = {}) {
 }
 
 async function createRecipeList(url, params = {}) {
-  const { results } = await getAllRecipes(url, params);
+  try {
+    const { results } = await getAllRecipes(url, params);
 
-  return results.reduce(
-    (markup, currentRecipe) => markup + generateMarkup(currentRecipe),
-    ''
-  );
+    return results.reduce(
+      (markup, currentRecipe) => markup + generateMarkup(currentRecipe),
+      ''
+    );
+  } catch (error) {
+    MessageApi.onNetworkError();
+    onEmptyResult();
+  }
 }
 
 async function showRecipes(url, params = {}) {
   const recipes = await createRecipeList(url, params);
   clearRecipeList();
+  console.log(url);
   recipeList.insertAdjacentHTML('beforeend', recipes);
   markUpRating();
 }

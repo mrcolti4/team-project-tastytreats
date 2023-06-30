@@ -6,11 +6,15 @@ const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const container = document.getElementById('tui-pagination-container');
 const windowWidth = document.documentElement.clientWidth;
 let limitCount = 0;
+let visiblePages = 0;
 if (windowWidth < 768) {
+  visiblePages = 2;
   limitCount = 6;
 } else if (windowWidth > 768 && windowWidth < 1280) {
+  visiblePages = 3;
   limitCount = 8;
 } else if (windowWidth > 1280) {
+  visiblePages = 3;
   limitCount = 9;
 }
 
@@ -20,7 +24,7 @@ async function createPagination(url, params) {
   const options = {
     totalItems: perPage * totalPages,
     itemsPerPage: perPage,
-    visiblePages: 3,
+    visiblePages: visiblePages,
     page: 1,
     centerAlign: false,
     firstItemClassName: 'tui-first-child',

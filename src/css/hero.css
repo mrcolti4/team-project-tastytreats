@@ -217,8 +217,4 @@
     display: inline-flex;
     gap: 32px;
   }
-
-  .slider {
-    padding-top: 100px;
-  }
 }

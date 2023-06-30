@@ -12,6 +12,10 @@ body.overflowHidden {
   overflow: hidden;
 }
 
+.hidden {
+  display: none;
+}
+
 .container {
   min-width: 320px;
   max-width: 375px;
@@ -96,6 +100,18 @@ ul {
   font-size: 18px;
 }
 
+.btn-outline-remove {
+  color: var(--input-label-error);
+  border: 1px solid var(--input-label-error);
+  transition: all 0.3s;
+}
+
+.btn-outline-remove:hover {
+  background-color: var(--input-label-error);
+  border: 1px solid var(--input-label-error);
+  color: var(--light-text-color);
+}
+
 .btn-outline-grey:hover {
   color: var(--light-text-color);
 }
@@ -107,4 +123,10 @@ ul {
 
 .btn-primary:hover {
   color: var(--primary-text-color);
+}
+.btn.btn-active {
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  box-shadow: 1px 1px 15px var(--main-color);
+  color: var(--light-text-color);
 }

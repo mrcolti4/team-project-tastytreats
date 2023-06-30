@@ -1,4 +1,4 @@
-import { onEmptyInput } from '../../filters';
+import { handleQuery } from '../../filters';
 
 const windowWidth = document.documentElement.clientWidth;
 let limitCount = 0;

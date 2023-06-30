@@ -1,5 +1,8 @@
-import { Loader } from './loader'
+import { Loader } from './loader';
 import { markUpRating } from './ratings';
+import localctorage from './localctorage';
+import { KEY } from './addToFavorites';
+import { addToFavorites, removeFromFavorites } from './addToFavorites';
 // Всі посилання
 let refs = {
   closeBtn: document.querySelector('.modal-close-btn'),
@@ -17,13 +20,16 @@ let refs = {
   IngredientBox: document.querySelector('.recipes-list'),
   hashtagsBox: document.querySelector('.hashtags-list'),
   textContentBox: document.querySelector('.cooking-recipes'),
+  addToFavoriteBtn: document.querySelector('.js-addToFavorite-btn'),
+  removeFromFavoriteBtn: document.querySelector('.js-removeFromFavorite-btn'),
 };
 
+let favRecipesObj = localctorage.load(KEY) || {};
+let recipeId;
 // Запуск по кліку
 // setTimeout(() => {
 //   finallInitPage('6462a8f74c3d0ddd28897fc1');
 // }, 2000)
-
 
 // /** Відкриття та закриття модального вікна */
 refs.closeBtn.addEventListener('click', closeModalClose);
@@ -36,7 +42,7 @@ function openModalOpen() {
     refs.backdropRecipe.classList.add('active');
     refs.modalRecipe.classList.add('active');
     // Loader.Stop();
-  }, 50)
+  }, 50);
 }
 function closeModalClose() {
   window.removeEventListener('keydown', onEscPress);
@@ -58,21 +64,22 @@ function onEscPress(e) {
 
 export function finallInitPage(id) {
   fetchRecipeById(id).then(data => {
-
-    renderVIDEO(data)
+    isFavorite(data._id);
+    renderVIDEO(data);
     renderRanting(data);
     markUpRating();
     renderIngridient(data);
     renderHashtags(data);
     renderText(data);
-
-    openModalOpen()
-  })
+    openModalOpen();
+    recipeId = data._id;
+  });
 }
 
-
 async function fetchRecipeById(id) {
-  const resp = await fetch(`https://tasty-treats-backend.p.goit.global/api/recipes/${id}`);
+  const resp = await fetch(
+    `https://tasty-treats-backend.p.goit.global/api/recipes/${id}`
+  );
   const data = await resp.json();
   return data;
 }
@@ -90,8 +97,7 @@ function stopVideos() {
   document.querySelectorAll('video').forEach(video => {
     video.pause();
   });
-
-};
+}
 function openPlayer() {
   refs.trailerBox.classList.add('active');
 }
@@ -109,7 +115,9 @@ function renderVIDEO(data) {
    <iframe
                 width="100%"
                 height="100%"
-                src="https://www.youtube.com/embed/${getKeyYouTybe(data.youtube)}?origin=https://mrcolti4.github.io"
+                src="https://www.youtube.com/embed/${getKeyYouTybe(
+                  data.youtube
+                )}?origin=https://mrcolti4.github.io"
 
 title = "YouTube video player"
 frameborder = "0"
@@ -162,12 +170,14 @@ function renderRanting(data) {
   refs.ratingBox.innerHTML = markupR;
 }
 function renderIngridient(data) {
-  const markup = data.ingredients.map(({ measure, name }) => {
-    return `<li class="recipes-subtitle">
+  const markup = data.ingredients
+    .map(({ measure, name }) => {
+      return `<li class="recipes-subtitle">
                 ${name}
                 <p class="recipes-inf" p>${measure}</p>
-              </li>`
-  }).join('');
+              </li>`;
+    })
+    .join('');
 
   refs.IngredientBox.innerHTML = markup;
 }
@@ -175,9 +185,11 @@ function renderHashtags(data) {
   if (data.tags.length === 0) {
     return;
   }
-  const markup = data.tags.map((tag) => {
-    return ` <li class="hashtags">#${tag}</li>`
-  }).join('');
+  const markup = data.tags
+    .map(tag => {
+      return ` <li class="hashtags">#${tag}</li>`;
+    })
+    .join('');
 
   refs.hashtagsBox.innerHTML = markup;
 }
@@ -185,7 +197,42 @@ function renderText(data) {
   refs.preview.src = data.preview;
   refs.title.textContent = data.title;
   refs.textContentBox.textContent = data.instructions;
-  refs.time.textContent = data.time + " min";
+  refs.time.textContent = data.time + ' min';
 }
 
+// Реалізцація кнопок додавання та видалення з блоку favorites
+refs.addToFavoriteBtn.addEventListener('click', onAddToFavClick);
+refs.removeFromFavoriteBtn.addEventListener('click', onRemoveFromFavClick);
 
+function onAddToFavClick(e) {
+  const listItem = document.querySelector(`li[data-id='${recipeId}']`);
+
+  addToFavorites(favRecipesObj, recipeId);
+
+  listItem.classList.add('onFavorites');
+  refs.addToFavoriteBtn.classList.add('hidden');
+  refs.removeFromFavoriteBtn.classList.remove('hidden');
+}
+
+function onRemoveFromFavClick(e) {
+  const listItem = document.querySelector(
+    `li.cards__item[data-id='${recipeId}']`
+  );
+
+  favRecipesObj = removeFromFavorites(favRecipesObj, recipeId);
+
+  listItem.classList.remove('onFavorites');
+  refs.addToFavoriteBtn.classList.remove('hidden');
+  refs.removeFromFavoriteBtn.classList.add('hidden');
+}
+
+function isFavorite(id) {
+  const favCards = localctorage.load(KEY);
+  if (Object.keys(favCards).includes(id)) {
+    refs.removeFromFavoriteBtn.classList.remove('hidden');
+    refs.addToFavoriteBtn.classList.add('hidden');
+    return;
+  }
+  refs.removeFromFavoriteBtn.classList.add('hidden');
+  refs.addToFavoriteBtn.classList.remove('hidden');
+}

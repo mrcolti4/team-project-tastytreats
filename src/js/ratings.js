@@ -5,11 +5,11 @@ function initRating(rating) {
   // Для кожного окремого рейтингу ініціалізуємо різні змінні
   initValues(rating);
   // Рахуємо відсоток заповненого рейтингу
-  const ratingActiveWidth = ratingValue.innerHTML / 0.05;
-  if (ratingActiveWidth > 100) {
-    ratingActive.style.width = `100%`;
-    return;
+  if (ratingValue.innerHTML > 5) {
+    ratingValue.innerHTML = 5;
   }
+  const ratingActiveWidth = ratingValue.innerHTML / 0.05;
+
   ratingActive.style.width = `${ratingActiveWidth}%`;
 }
 
