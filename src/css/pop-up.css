@@ -73,7 +73,9 @@
 .icon-close:focus {
   stroke: var(--main-color);
 }
-
+.rating__value.detail {
+  color: var(--primary-text-CH-color-RATING-modal);
+}
 .btn-add {
   width: 133px;
   height: 41px;

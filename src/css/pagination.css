@@ -13,8 +13,11 @@
   text-align: center;
   font-size: 0;
 }
-
+.tui-ico-ellip {
+  background-color: var(--primary-text-CH-color);
+}
 .tui-pagination .tui-page-btn {
+  background-color: var(--bgc-CH-background);
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -24,9 +27,9 @@
   font-weight: 600;
   line-height: calc(22 / 18);
   position: relative;
-  color: var(--primary-text-color);
+  color: var(--primary-text-CH-color);
   border-radius: 50%;
-  border: 1px solid var(--main-color);
+  border: 1px solid var(--border-paginatio);
 }
 
 .tui-pagination .tui-prev {
