@@ -13,7 +13,9 @@
     overflow: hidden;
   }
 }
-
+.popular.main {
+  margin-top: 64px;
+}
 @media screen and (max-width: 768px) {
   .popular.main {
     position: absolute;
@@ -22,6 +24,7 @@
     margin: -1px;
     border: 0;
     padding: 0;
+    margin-top: 80px;
 
     white-space: nowrap;
     clip-path: inset(100%);
