@@ -15,7 +15,7 @@
   --bgc-CH-background-mob-menu:#050505;
   --border-paginatio: rgba(255, 255, 255, 0.3);
 }
-.toggler-control {
+/* .toggler-control {
   filter: invert(1);
 }
 .toggler-control:checked {
@@ -23,4 +23,4 @@
 }
 .toggler-status {
   filter: invert(1);
-}
+} */

@@ -16,7 +16,7 @@
   --border-paginatio: #9bb537;
 }
 
-.toggler-control {
+/* .toggler-control {
   filter: invert(0);
 }
 .toggler-control:checked {
@@ -24,4 +24,4 @@
 }
 .toggler-status {
   filter: invert(0);
-}
+} */
