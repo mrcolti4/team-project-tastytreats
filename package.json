@@ -2,10 +2,10 @@
   "name": "team-project-tastytreats",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://mrcolti4.github.io/team-project-tastytreats",
+  "homepage": "https://GoitStudentsWorks.github.io/js_81_tmrcolti4",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /team-project-tastytreats/"
+    "build": "parcel build src/*.html --public-url /js_81_tmrcolti4/"
   },
   "repository": {
     "type": "git",
