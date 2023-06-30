@@ -11,9 +11,12 @@
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+
+    display: none;
   }
 }
-.popular.main {
+.popular.main,
+.popular-mobile {
   margin-top: 64px;
 }
 @media screen and (max-width: 768px) {
