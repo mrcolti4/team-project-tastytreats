@@ -16,7 +16,7 @@
 
 .all-categiries-list-container {
   /* background-color: skyblue; */
-  scrollbar-base-color: red;
+  /* scrollbar-base-color: red; */
 }
 .all-categories-list {
   display: flex;
