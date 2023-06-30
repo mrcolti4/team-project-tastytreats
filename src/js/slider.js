@@ -10,8 +10,8 @@ function sliderStart() {
       dots: true,
       slidesToShow: 3,
       slidesToScroll: 3,
-      autoplay: false,
-      autoplaySpeed: 6000,
+      autoplay: true,
+      autoplaySpeed: 5000,
     });
   });
 }
@@ -36,8 +36,6 @@ async function fetchEvents() {
 // Робимо розмітку
 
 function renderSlider(arrEvents) {
-  console.log(arrEvents);
-
   const markup = arrEvents
     .map(event => {
       return `

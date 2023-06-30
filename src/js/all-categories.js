@@ -4,7 +4,15 @@ import { handleQuery } from './filters.js';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesBtn = document.querySelector('.all-categories-btn');
-const allCategoriesList = document.querySelector('.all-categories-list');
+const allCatConteiner = document.querySelector(
+  '.all-categiries-list-container'
+);
+
+allCatConteiner.addEventListener('click', changeActiveClassMenuButtons);
+allCategoriesBtn.addEventListener(
+  'click',
+  changeActiveClassAllCategoriesButton
+);
 
 async function handleCategoryClick(e) {
   const target = e.target;
@@ -26,15 +34,14 @@ async function createAllCategireisListItem() {
 
   const AllCategireisListItem = categories
     .map(category => {
-      return `<li class="all-categories-item"">
+      return `
                 <button class="all-categories-item-btn"
                   type="button">${category}
-                </button>
-              </li>`;
+                </button>`;
     })
     .join('');
 
-  allCategoriesList.insertAdjacentHTML('afterbegin', AllCategireisListItem);
+  allCatConteiner.insertAdjacentHTML('afterbegin', AllCategireisListItem);
 }
 
 createAllCategireisListItem();

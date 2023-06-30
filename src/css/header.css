@@ -17,7 +17,7 @@
   letter-spacing: -0.64px;
 }
 .logo-color {
-  color: var(--primary-text-color);
+  color: var(--primary-text-CH-color);
 }
 .header-btn-box {
   display: flex;
@@ -36,7 +36,7 @@
 }
 .shopping-icon {
   fill: transparent;
-  stroke: var(--primary-text-color);
+  stroke: var(--primary-text-CH-color);
 }
 .burger-menu {
   display: flex;
@@ -50,6 +50,7 @@
 .burger-menu-icon {
   width: 32px;
   height: 32px;
+  stroke: var(--primary-text-CH-color);
 }
 /* ---TOGGLE SWITCH--- */
 .switcher-input[type='checkbox'] {
@@ -118,16 +119,16 @@
   position: fixed;
   top: 0;
   left: 0;
-
+  right: 0;
   bottom: 0;
 
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   /* padding: 32px; */
   padding: 0;
   padding-top: 200px;
 
-  background-color: var(--main-color);
+  background-color: var(--bgc-CH-background-mob-menu);
   z-index: 999;
 
   transform: translateX(-100%);
@@ -195,7 +196,7 @@
     gap: 16;
   }
   .nav-link {
-    color: var(--primary-text-color);
+    color: var(--primary-text-CH-color);
     font-size: 12px;
     font-family: Inter;
     font-weight: 500;

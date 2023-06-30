@@ -3,12 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="color-scheme"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="color-scheme"
+      media="(prefers-color-scheme: dark)"
+      content="#1f2e35"
+    />
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./css/light-theme.css"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <link
+      rel="stylesheet"
+      href="./css/dark-theme.css"
+      media="(prefers-color-scheme: dark)"
+      content="#1f2e35"
     />
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="stylesheet" href="./css/favorites-main.css" />
@@ -20,6 +42,9 @@
     <main>
       <include src="./partials/favorites-page/favorites-hero.html"></include>
       <include src="./partials/favorites-page/favorites-main.html"></include>
+      <include src="./partials/order-now.html"></include>
+      <include src="./partials/btn-up.html"></include>
+      <include src="./partials/pop-up.html"></include>
     </main>
 
     <script src="./favorites.js" type="module"></script>

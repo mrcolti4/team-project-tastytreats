@@ -8,6 +8,7 @@ const refs = {
 setupSwitcher()
 setUpScheme();
 
+
 function setupSwitcher() {
     const savedScheme = getSavedScheme();
 

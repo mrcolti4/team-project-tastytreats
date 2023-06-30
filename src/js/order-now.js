@@ -6,8 +6,12 @@ const refs = {
     modal: document.querySelector('.modal-order'),
     forma: document.querySelector('.modal-form-order'),
 }
+try {
+    refs.openModalBtnHero.addEventListener('click', openModalOpen);
+} catch (error) {
 
-refs.openModalBtnHero.addEventListener('click', openModalOpen);
+}
+
 refs.openModalBtn.addEventListener('click', openModalOpen);
 refs.closeModalBtn.addEventListener('click', closeModalClose);
 refs.backdrop.addEventListener('click', clickBackdropClick);
