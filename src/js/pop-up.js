@@ -43,9 +43,12 @@ function closeModalClose() {
   document.body.classList.remove('overflowHidden');
   refs.backdropRecipe.classList.remove('active');
   refs.modalRecipe.classList.remove('active');
+
+
 }
 function clickBackdropClick(e) {
   if (e.currentTarget === e.target) {
+    stopVideos()
     closeModalClose();
   }
 }

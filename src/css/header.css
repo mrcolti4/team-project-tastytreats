@@ -128,7 +128,7 @@
   padding: 0;
   padding-top: 200px;
 
-  background-color: var(--main-color);
+  background-color: var(--bgc-CH-background-mob-menu);
   z-index: 999;
 
   transform: translateX(-100%);

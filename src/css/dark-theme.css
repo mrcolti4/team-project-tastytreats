@@ -8,8 +8,10 @@
   --primary-text-CH-color-RATING: rgba(255, 255, 255, 0.5);
   --primary-text-CH-color-STARS: rgba(255, 255, 255, 0.1);
   --primary-text-CH-color-CardTitle-Description: color: rgba(255, 255, 255, 0.80);
+  --primary-text-CH-color-menu-mob:#9bb537;
 
   --bgc-CH-background: #161616;
+  --bgc-CH-background-mob-menu:#050505;
 }
 
 .toggler-control {
