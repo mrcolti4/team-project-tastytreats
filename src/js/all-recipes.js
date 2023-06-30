@@ -32,7 +32,8 @@ function generateMarkup({ _id, title, description, preview, rating }) {
   const favObj = localctorage.load('favCards') || {};
 
   return `
-    <li class="cards__item items-set ${favObj[_id] ? 'onFavorites' : ''
+    <li class="cards__item items-set ${
+      favObj[_id] ? 'onFavorites' : ''
     }" data-id="${_id}">
     <img src="${preview}" alt="${title}" class="cards__img" />
     <button class="cards__fav-btn">
@@ -156,7 +157,6 @@ showRecipes(URL, { limit: limitCount });
 export { showRecipes };
 
 recipeList.addEventListener('click', e => {
-
   if (e.target.nodeName === 'BUTTON') {
     finallInitPage(e.target.closest('.cards__item').dataset.id);
   }

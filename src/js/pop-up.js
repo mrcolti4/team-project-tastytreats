@@ -24,7 +24,6 @@ let refs = {
   removeFromFavoriteBtn: document.querySelector('.js-removeFromFavorite-btn'),
 };
 
-let favRecipesObj = localctorage.load(KEY) || {};
 let recipeId;
 // Запуск по кліку
 // setTimeout(() => {
@@ -49,12 +48,10 @@ function closeModalClose() {
   document.body.classList.remove('overflowHidden');
   refs.backdropRecipe.classList.remove('active');
   refs.modalRecipe.classList.remove('active');
-
-
 }
 function clickBackdropClick(e) {
   if (e.currentTarget === e.target) {
-    stopVideos()
+    stopVideos();
     closeModalClose();
   }
 }
@@ -210,7 +207,7 @@ refs.removeFromFavoriteBtn.addEventListener('click', onRemoveFromFavClick);
 function onAddToFavClick(e) {
   const listItem = document.querySelector(`li[data-id='${recipeId}']`);
 
-  addToFavorites(favRecipesObj, recipeId);
+  addToFavorites(localctorage.load(KEY), recipeId);
 
   listItem.classList.add('onFavorites');
   refs.addToFavoriteBtn.classList.add('hidden');
@@ -222,7 +219,7 @@ function onRemoveFromFavClick(e) {
     `li.cards__item[data-id='${recipeId}']`
   );
 
-  favRecipesObj = removeFromFavorites(favRecipesObj, recipeId);
+  removeFromFavorites(localctorage.load(KEY), recipeId);
 
   listItem.classList.remove('onFavorites');
   refs.addToFavoriteBtn.classList.remove('hidden');
@@ -230,7 +227,7 @@ function onRemoveFromFavClick(e) {
 }
 
 function isFavorite(id) {
-  const favCards = localctorage.load(KEY);
+  const favCards = localctorage.load(KEY) || {};
   if (Object.keys(favCards).includes(id)) {
     refs.removeFromFavoriteBtn.classList.remove('hidden');
     refs.addToFavoriteBtn.classList.add('hidden');
