@@ -11,9 +11,14 @@
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+
+    display: none;
   }
 }
 
+.popular {
+  margin-top: 80px;
+}
 @media screen and (max-width: 768px) {
   .popular.main {
     position: absolute;
@@ -22,6 +27,7 @@
     margin: -1px;
     border: 0;
     padding: 0;
+    margin-top: 80px;
 
     white-space: nowrap;
     clip-path: inset(100%);
@@ -97,6 +103,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .popular {
+    margin-top: 64px;
+  }
   .popular-img {
     width: 48px;
     height: 48px;
