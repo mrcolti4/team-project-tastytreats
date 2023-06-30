@@ -35,5 +35,5 @@ function turnOnOffCross() {
 function clickCross() {
   input.value = '';
   clearInput.classList.remove('active');
-  onEmptyInput();
+  handleQuery();
 }

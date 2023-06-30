@@ -148,7 +148,6 @@ async function createRecipeList(url, params = {}) {
 async function showRecipes(url, params = {}) {
   const recipes = await createRecipeList(url, params);
   clearRecipeList();
-  console.log(url);
   recipeList.insertAdjacentHTML('beforeend', recipes);
   markUpRating();
 }
@@ -158,7 +157,8 @@ showRecipes(URL, { limit: limitCount });
 export { showRecipes };
 
 recipeList.addEventListener('click', e => {
-  const refLI = e.target.closest('.cards__item');
+  const refLI = e.target.closest('.cards__btn');
+  //console.log(refLI);
   try {
     let is = refLI.nodeName;
   } catch (error) {
