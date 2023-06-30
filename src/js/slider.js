@@ -42,17 +42,17 @@ function renderSlider(arrEvents) {
 
       
       <div class="slider-item-cook" >
-      <img src="${event.cook.imgUrl}" alt="${event.cook.name}">
+      <img src="${event.cook.imgUrl}" loading="lazy" alt="${event.cook.name}">
       </div>
       
       <div class="slider-item-topic bcg">
-        <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
+        <img src="${event.topic.imgUrl}" loading="lazy" alt="${event.topic.name}">
         <p class="description">${event.topic.name}</p>
         <p class="country">${event.topic.area}</p>
       </div>
       
       <div class="slider-item-finally">
-        <img src="${event.topic.imgUrl}" alt="${event.topic.name}">
+        <img src="${event.topic.imgUrl}" loading="lazy" alt="${event.topic.name}">
       </div>
       
    
