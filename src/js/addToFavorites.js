@@ -10,13 +10,11 @@ let favRecipesObj = localctorage.load(KEY) || {};
 // localStorageObj = omit(localStorageObj, id);
 // localctorage.save(KEY, localStorageObj);
 export function removeFromFavorites(localStorageObj, id) {
-  localStorageObj = omit(localStorageObj, id);
-  localctorage.save(KEY, localStorageObj);
-
-  return localStorageObj;
+  favRecipesObj = omit(localStorageObj, id);
+  localctorage.save(KEY, favRecipesObj);
 }
 
-export async function addToFavorites(localStorageObj, id) {
+export async function addToFavorites(localStorageObj = {}, id) {
   const data = await getInfo(id);
 
   localStorageObj[id] = data;
@@ -54,7 +52,7 @@ async function onBtnClick(e) {
       // Видалення об'єкту з улюбленних за допомогою omit
       // favRecipesObj = omit(favRecipesObj, id);
       // localctorage.save(KEY, favRecipesObj);
-      favRecipesObj = removeFromFavorites(favRecipesObj, id);
+      removeFromFavorites(favRecipesObj, id);
       return;
     }
   }
