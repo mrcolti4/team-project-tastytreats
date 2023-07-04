@@ -42,12 +42,12 @@ const favPagination = new Pagination(pagContainer, options);
 
 favPagination.on('afterMove', event => {
   const currentPage = event.page;
-  pagOnCategory(favRecipesItems, currentPage);
+  showPage(favRecipesItems, currentPage);
 });
 
-function pagOnCategory(recipes, page) {
+function showPage(recipes, page) {
   const data = splitArrOnPages(recipes, page, 12);
-  console.log(data);
+
   showFavRecipes(data);
 }
 
@@ -71,28 +71,31 @@ function addAllCategoriesBtn() {
 function sortByCategory(e) {
   const target = e.target;
   const allCatBtn = e.currentTarget.firstChild;
-  favRecipesItems = Object.values(favCards);
 
-  if (target.matches('button.category-button-button')) {
-    allCatBtn.classList.remove('btn-active');
-    const newArr = favRecipesItems.filter(item => {
-      return target.textContent === item.category;
-    });
-    favRecipesItems = newArr;
+  if (target.nodeName === 'BUTTON') {
+    favRecipesItems = Object.values(favCards);
 
-    showFavRecipes(splitArrOnPages(newArr, 1, 12));
-    favPagination.reset(newArr.length);
+    if (target.matches('button.category-button-button')) {
+      allCatBtn.classList.remove('btn-active');
+      const newArr = favRecipesItems.filter(item => {
+        return target.textContent === item.category;
+      });
+      favRecipesItems = newArr;
 
-    return;
-  }
+      showFavRecipes(splitArrOnPages(newArr, 1, 12));
+      favPagination.reset(newArr.length);
 
-  if (target.matches('button.fav-btn')) {
-    target.classList.add('btn-active');
+      return;
+    }
 
-    showFavRecipes(splitArrOnPages(favRecipesItems, 1, 12));
-    favPagination.reset(favRecipesItems.length);
+    if (target.matches('button.fav-btn')) {
+      target.classList.add('btn-active');
 
-    return;
+      showFavRecipes(splitArrOnPages(favRecipesItems, 1, 12));
+      favPagination.reset(favRecipesItems.length);
+
+      return;
+    }
   }
 }
 
