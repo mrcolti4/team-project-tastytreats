@@ -11,6 +11,10 @@ const filterList = document.querySelector('.category-button-wrap');
 const pagContainer = document.querySelector('.favorite__pagintaion');
 let favRecipesItems = Object.values(favCards);
 
+const pagInfo = {
+  itemsPerPage: 12,
+};
+
 const options = {
   totalItems: favRecipesItems.length,
   itemsPerPage: 12,
@@ -46,14 +50,13 @@ favPagination.on('afterMove', event => {
 });
 
 function showPage(recipes, page) {
-  const data = splitArrOnPages(recipes, page, 12);
-
+  const data = splitArrOnPages(recipes, page, pagInfo.itemsPerPage);
   showFavRecipes(data);
 }
 
 function splitArrOnPages(arr, page, itemsCount) {
-  const start = (page - 1) * itemsCount;
-  const end = start + itemsCount;
+  const start = (page - 1) * itemsCount; // page = 1 => 0
+  const end = start + itemsCount; // 12
 
   const trimmedData = arr.slice(start, end);
   return trimmedData;
@@ -75,23 +78,26 @@ function sortByCategory(e) {
   if (target.nodeName === 'BUTTON') {
     favRecipesItems = Object.values(favCards);
 
+    // Якщо натискаємо на якийсь фільтр
     if (target.matches('button.category-button-button')) {
       allCatBtn.classList.remove('btn-active');
-      const newArr = favRecipesItems.filter(item => {
-        return target.textContent === item.category;
+
+      const newArr = favRecipesItems.filter(({ category }) => {
+        return target.textContent === category;
       });
       favRecipesItems = newArr;
 
-      showFavRecipes(splitArrOnPages(newArr, 1, 12));
+      showFavRecipes(splitArrOnPages(newArr, 1, pagInfo.itemsPerPage));
       favPagination.reset(newArr.length);
 
       return;
     }
 
+    // Якщо натискаємо allcategories
     if (target.matches('button.fav-btn')) {
       target.classList.add('btn-active');
 
-      showFavRecipes(splitArrOnPages(favRecipesItems, 1, 12));
+      showFavRecipes(splitArrOnPages(favRecipesItems, 1, pagInfo.itemsPerPage));
       favPagination.reset(favRecipesItems.length);
 
       return;
@@ -133,7 +139,7 @@ function showFavRecipes(recipeArr) {
 }
 
 if (favRecipesItems.length) {
-  showFavRecipes(splitArrOnPages(favRecipesItems, 1, 12));
+  showFavRecipes(splitArrOnPages(favRecipesItems, 1, pagInfo.itemsPerPage));
   showFilterBtns();
 }
 
