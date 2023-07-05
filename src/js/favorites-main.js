@@ -1,55 +1,25 @@
-import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import localctorage from './localctorage';
 import generateMarkup from './generateMarkup';
 import { finallInitPage } from './pop-up';
 import { markUpRating } from './ratings';
+import { favPagination } from './favorites/pagination';
 
 const favCards = localctorage.load('favCards') || {};
 const cardsList = document.querySelector('.cards__list');
 const filterList = document.querySelector('.category-button-wrap');
-const pagContainer = document.querySelector('.favorite__pagintaion');
 let favRecipesItems = Object.values(favCards);
 
 const pagInfo = {
-  itemsPerPage: 12,
+  itemsPerPage: window.innerWidth > 768 ? 12 : 9,
 };
 
-const options = {
-  totalItems: favRecipesItems.length,
-  itemsPerPage: 12,
-  visiblePages: 3,
-  page: 1,
-  centerAlign: false,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
-    page: '<a href="#" class="pag__page-btn tui-page-btn">{{page}}</a>',
-    currentPage:
-      '<strong class="pag__current-page tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="pag__btn-move tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="pag__btn-move pag__btn-disabled tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
-  },
-};
+function filterPage(arr) {
+  showFavRecipes(splitArrOnPages(arr, 1, pagInfo.itemsPerPage));
+  favPagination.reset(arr.length);
+}
 
-const favPagination = new Pagination(pagContainer, options);
-
-favPagination.on('afterMove', event => {
-  const currentPage = event.page;
-  showPage(favRecipesItems, currentPage);
-});
-
-function showPage(recipes, page) {
+function showNextPage(recipes, page) {
   const data = splitArrOnPages(recipes, page, pagInfo.itemsPerPage);
   showFavRecipes(data);
 }
@@ -65,7 +35,7 @@ function splitArrOnPages(arr, page, itemsCount) {
 function addAllCategoriesBtn() {
   filterList.insertAdjacentHTML(
     'beforeend',
-    `<button type="button" class="fav-btn all-categories-btn btn btn-active">
+    `<button type="button" class="js-allcategories fav-btn all-categories-btn btn btn-active">
     All categories
   </button>`
   );
@@ -73,32 +43,33 @@ function addAllCategoriesBtn() {
 
 function sortByCategory(e) {
   const target = e.target;
-  const allCatBtn = e.currentTarget.firstChild;
 
   if (target.nodeName === 'BUTTON') {
+    const currentActiveBtn = document.querySelector('.btn-active');
+
+    // Робимо активну тільки обрану кнопку.
+    currentActiveBtn.classList.remove('btn-active');
+    target.classList.add('btn-active');
+    // Після натискання на кнопку оновлюємо масив з улюбленими стравами
     favRecipesItems = Object.values(favCards);
 
     // Якщо натискаємо на якийсь фільтр
-    if (target.matches('button.category-button-button')) {
-      allCatBtn.classList.remove('btn-active');
-
+    if (target.matches('button.js-category')) {
+      // Створюємо масив значення якого є відфільтрований масив
+      // з усіма улюбленими стравами
       const newArr = favRecipesItems.filter(({ category }) => {
         return target.textContent === category;
       });
+      // Перезаписуємо масив для пагінації
       favRecipesItems = newArr;
-
-      showFavRecipes(splitArrOnPages(newArr, 1, pagInfo.itemsPerPage));
-      favPagination.reset(newArr.length);
+      filterPage(newArr);
 
       return;
     }
 
-    // Якщо натискаємо allcategories
-    if (target.matches('button.fav-btn')) {
-      target.classList.add('btn-active');
-
-      showFavRecipes(splitArrOnPages(favRecipesItems, 1, pagInfo.itemsPerPage));
-      favPagination.reset(favRecipesItems.length);
+    // Якщо натискаємо на allcategories
+    if (target.matches('button.js-allcategories')) {
+      filterPage(favRecipesItems);
 
       return;
     }
@@ -106,7 +77,7 @@ function sortByCategory(e) {
 }
 
 function createBtnMarkUp(category) {
-  return `<button type="button" class="category-button-button btn">${category}</button>`;
+  return `<button type="button" class="js-category btn-outline-grey btn-fav btn">${category}</button>`;
 }
 
 function createBtnFilters() {
@@ -149,3 +120,8 @@ cardsList.addEventListener('click', e => {
   }
 });
 filterList.addEventListener('click', sortByCategory);
+
+favPagination.on('afterMove', event => {
+  const currentPage = event.page;
+  showNextPage(favRecipesItems, currentPage);
+});

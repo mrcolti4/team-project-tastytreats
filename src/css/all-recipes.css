@@ -128,7 +128,7 @@
   content: '★★★★★';
   display: block;
   color: var(--primary-text-CH-color-STARS);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .rating__active {

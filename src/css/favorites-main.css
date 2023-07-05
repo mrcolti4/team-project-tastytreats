@@ -5,7 +5,7 @@
 .category-button-wrap {
   width: 100%;
   display: flex;
-  /* overflow-x: scroll; */
+  overflow-x: auto;
   gap: 12px;
 }
 
@@ -97,6 +97,20 @@
   margin: 0;
 }
 .fav-cards__list {
-  --items: 4;
-  --ident: 16px;
+  --items: 1;
+  --ident: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .fav-cards__list {
+    --items: 3;
+    --ident: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .fav-cards__list {
+    --items: 4;
+    --ident: 16px;
+  }
 }
