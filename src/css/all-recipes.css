@@ -117,7 +117,12 @@
   display: flex;
   align-items: baseline;
   font-size: 18px;
-  gap: 4px;
+}
+
+@media screen and (min-width: 1280px) {
+  .rating {
+    gap: 4px;
+  }
 }
 
 .rating__body {
@@ -128,7 +133,7 @@
   content: '★★★★★';
   display: block;
   color: var(--primary-text-CH-color-STARS);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .rating__active {
@@ -148,7 +153,7 @@
   top: 0;
   left: 0;
   color: #eea10c;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .rating__items {

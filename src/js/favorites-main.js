@@ -1,202 +1,128 @@
-const buttonsContainer = document.querySelector('.category-button-wrap');
-const favoriteCards = document.querySelector('.cards__list.card-set');
-const noRecipeBox = document.querySelector('.no-recipe-box');
+import 'tui-pagination/dist/tui-pagination.css';
+import localctorage from './localctorage';
+import generateMarkup from './generateMarkup';
+import { finallInitPage } from './pop-up';
+import { markUpRating } from './ratings';
+import { favPagination } from './favorites/pagination';
 
-const localStorageDB = [
-  {
-    _id: '6462a8f74c3d0ddd28897fc1',
-    title: 'Chocolate Gateau',
-    category: 'Dessert',
-    description:
-      'A French dessert consisting of layers of chocolate sponge cake and chocolate ganache, typically topped with chocolate glaze and chocolate decorations.',
-    preview:
-      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560403/zyahxajhkglf8sisiqlh.jpg',
-    time: '75',
-    rating: 3,
-  },
-  {
-    _id: '6462a8f74c3d0ddd28897fbc',
-    title: 'Irish stew',
-    category: 'Beef',
-    description:
-      'A traditional Irish dish made with lamb, potatoes, carrots, onions, and herbs, cooked in a broth or gravy.',
-    preview:
-      ' "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560408/kknfjaqupiqhufj5kspx.jpg',
-    time: '160',
-    rating: 3,
-  },
-  {
-    _id: '6462a8f74c3d0ddd28897fb9',
-    title: 'Lamb tomato and sweet spices',
-    category: 'Beef',
-    description:
-      'A Moroccan-inspired dish made with lamb, tomatoes, onions, and spices (such as cinnamon, ginger, and cumin), typically served with couscous or bread.',
-    preview:
-      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560405/zlxxkd81sadgwzbugyzl.jpg',
-    time: '90',
-    rating: 89,
-  },
-  {
-    _id: '6462a8f74c3d0ddd28897fc1',
-    title: 'Chocolate Gateau',
-    category: 'Dessert',
-    description:
-      'A French dessert consisting of layers of chocolate sponge cake and chocolate ganache, typically topped with chocolate glaze and chocolate decorations.',
-    preview:
-      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560403/zyahxajhkglf8sisiqlh.jpg',
-    time: '75',
-    rating: 3,
-  },
-  {
-    _id: '6462a8f74c3d0ddd28897fbc',
-    title: 'Irish stew',
-    category: 'Beef',
-    description:
-      'A traditional Irish dish made with lamb, potatoes, carrots, onions, and herbs, cooked in a broth or gravy.',
-    preview:
-      ' "https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560408/kknfjaqupiqhufj5kspx.jpg',
-    time: '160',
-    rating: 3,
-  },
-  {
-    _id: '6462a8f74c3d0ddd28897fb9',
-    title: 'Lamb tomato and sweet spices',
-    category: 'Beef',
-    description:
-      'A Moroccan-inspired dish made with lamb, tomatoes, onions, and spices (such as cinnamon, ginger, and cumin), typically served with couscous or bread.',
-    preview:
-      'https://res.cloudinary.com/ddbvbv5sp/image/upload/v1678560405/zlxxkd81sadgwzbugyzl.jpg',
-    time: '90',
-    rating: 89,
-  },
-];
+const favCards = localctorage.load('favCards') || {};
+const cardsList = document.querySelector('.cards__list');
+const filterList = document.querySelector('.category-button-wrap');
+let favRecipesItems = Object.values(favCards);
 
-const categories = [];
+const pagInfo = {
+  itemsPerPage: window.innerWidth > 768 ? 12 : 9,
+};
 
-if (localStorageDB.length > 0) {
-  markupFavoriteBtn(localStorageDB);
-  markupFavoriteCard(localStorageDB);
-} else {
-  noRecipeBox.classList.remove('visually-hidden');
+function filterPage(arr) {
+  showFavRecipes(splitArrOnPages(arr, 1, pagInfo.itemsPerPage));
+  favPagination.reset(arr.length);
+  favPagination.isActive();
 }
 
-buttonsContainer.addEventListener('click', changeActiveClassMenuButtons);
-buttonsContainer.addEventListener('click', onFilter);
+function showNextPage(recipes, page) {
+  const data = splitArrOnPages(recipes, page, pagInfo.itemsPerPage);
+  showFavRecipes(data);
+}
 
-function markupFavoriteBtn(data) {
-  data.forEach(element => {
-    if (!categories.includes(element.category)) {
-      categories.push(element.category);
-    }
-  });
-  buttonsContainer.insertAdjacentHTML(
-    'afterbegin',
-    createMarkupFavotiteBtn('All Categories')
+function splitArrOnPages(arr, page, itemsCount) {
+  const start = (page - 1) * itemsCount; // page = 1 => 0
+  const end = start + itemsCount; // 12
+
+  const trimmedData = arr.slice(start, end);
+  return trimmedData;
+}
+
+function addAllCategoriesBtn() {
+  filterList.insertAdjacentHTML(
+    'beforeend',
+    `<button type="button" class="js-allcategories all-categories-btn btn btn-active">
+    All categories
+  </button>`
   );
-  buttonsContainer.firstElementChild.classList.add('active');
-  const murkup = categories
-    .map(element => createMarkupFavotiteBtn(element))
-    .join('');
-  //   return categories;
-  buttonsContainer.insertAdjacentHTML('beforeend', murkup);
 }
 
-function markupFavoriteCard(data) {
-  const markup = data.reduce(
-    (markup, currentCard) => markup + createMarkupFavoriteCard(currentCard),
+function sortByCategory(e) {
+  const target = e.target;
+
+  if (target.nodeName === 'BUTTON') {
+    const currentActiveBtn = document.querySelector('.btn-active');
+
+    // Робимо активну тільки обрану кнопку.
+    currentActiveBtn.classList.remove('btn-active');
+    target.classList.add('btn-active');
+    // Після натискання на кнопку оновлюємо масив з улюбленими стравами
+    favRecipesItems = Object.values(favCards);
+
+    // Якщо натискаємо на якийсь фільтр
+    if (target.matches('button.js-category')) {
+      // Створюємо масив значення якого є відфільтрований масив
+      // з усіма улюбленими стравами
+      const newArr = favRecipesItems.filter(({ category }) => {
+        return target.textContent === category;
+      });
+      // Перезаписуємо масив для пагінації
+      favRecipesItems = newArr;
+      filterPage(newArr);
+
+      return;
+    }
+
+    // Якщо натискаємо на allcategories
+    if (target.matches('button.js-allcategories')) {
+      filterPage(favRecipesItems);
+
+      return;
+    }
+  }
+}
+
+function createBtnMarkUp(category) {
+  return `<button type="button" class="js-category btn-outline-grey btn-fav btn">${category}</button>`;
+}
+
+function createBtnFilters() {
+  const uniqueCategories = favRecipesItems
+    .map(item => item.category)
+    .filter((item, index, arr) => arr.indexOf(item) === index);
+
+  return uniqueCategories.reduce(
+    (markup, btn) => markup + createBtnMarkUp(btn),
     ''
   );
-  favoriteCards.innerHTML = `${markup}`;
 }
 
-function createMarkupFavotiteBtn(category) {
-  return `
-    <button type="button" class="category-button-button btn">${category}</button>
-    `;
+function showFilterBtns() {
+  const buttons = createBtnFilters();
+  addAllCategoriesBtn();
+  filterList.insertAdjacentHTML('beforeend', buttons);
 }
 
-function createMarkupFavoriteCard({
-  _id,
-  title,
-  category,
-  description,
-  preview,
-  time,
-  rating,
-}) {
-  return `<li class="cards__item items-set fav-set">
-  <img src="${preview}" alt="" class="cards__img" />
-  <svg class="cards__heart" width="19" height="17">
-    <use href="./images/sprite.svg#icon-heart"></use>
-  </svg>
-  <div class="cards__descr">
-    <h4 class="cards__title">${title}</h4>
-    <p class="cards__text">
-      ${description}
-    </p>
-    <div class="cards__info">
-      <div class="cards__rating rating">
-        <div class="rating__value">5</div>
-        <div class="rating__body">
-          <div class="rating__active"></div>
-          <div class="rating__items">
-            <input
-              type="radio"
-              class="rating__item"
-              name="rating"
-              value="1"
-            />
-            <input
-              type="radio"
-              class="rating__item"
-              name="rating"
-              value="2"
-            />
-            <input
-              type="radio"
-              class="rating__item"
-              name="rating"
-              value="3"
-            />
-            <input
-              type="radio"
-              class="rating__item"
-              name="rating"
-              value="4"
-            />
-            <input
-              type="radio"
-              class="rating__item"
-              name="rating"
-              value="5"
-            />
-          </div>
-        </div>
-      </div>
-      <button class="btn btn-primary cards__btn">See recipe</button>
-    </div>
-  </div>
-</li>`;
+function showFavRecipes(recipeArr) {
+  const markUp = recipeArr.reduce(
+    (markup, card) => markup + generateMarkup(card),
+    ''
+  );
+
+  cardsList.innerHTML = '';
+  cardsList.insertAdjacentHTML('beforeend', markUp);
+
+  markUpRating();
 }
 
-function changeActiveClassMenuButtons(e) {
-  for (let i = 0; i < e.currentTarget.children.length; i += 1) {
-    e.currentTarget.children[i].classList.remove('active');
+if (favRecipesItems.length) {
+  showFavRecipes(splitArrOnPages(favRecipesItems, 1, pagInfo.itemsPerPage));
+  showFilterBtns();
+}
+
+cardsList.addEventListener('click', e => {
+  if (e.target.nodeName === 'BUTTON') {
+    finallInitPage(e.target.closest('.cards__item').dataset.id);
   }
-  e.target.classList.add('active');
-}
+});
+filterList.addEventListener('click', sortByCategory);
 
-function onFilter(e) {
-  const filterCategory = String(e.target.textContent);
-
-  if (filterCategory === 'All Categories') {
-    markupFavoriteCard(localStorageDB);
-  } else {
-    favoriteCards.innerHTML = '';
-    const testBase = [];
-    const newDatabase = localStorageDB.filter(
-      element => element.category === filterCategory
-    );
-    markupFavoriteCard(newDatabase);
-  }
-}
+favPagination.on('afterMove', event => {
+  const currentPage = event.page;
+  showNextPage(favRecipesItems, currentPage);
+});

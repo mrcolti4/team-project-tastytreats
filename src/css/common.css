@@ -92,6 +92,12 @@ ul {
   border: 1px solid var(--main-color);
 }
 
+.btn.btn-fav {
+  font-size: 16px;
+  line-height: calc(20 / 16);
+  padding: 14px 18px;
+}
+
 .btn:hover {
   background-color: var(--main-color);
   color: var(--light-text-color);
