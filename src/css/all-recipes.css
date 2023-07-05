@@ -119,6 +119,12 @@
   font-size: 18px;
 }
 
+@media screen and (min-width: 1280px) {
+  .rating {
+    gap: 4px;
+  }
+}
+
 .rating__body {
   position: relative;
 }
