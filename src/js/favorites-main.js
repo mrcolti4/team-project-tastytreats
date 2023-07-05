@@ -17,7 +17,7 @@ const pagInfo = {
 function filterPage(arr) {
   showFavRecipes(splitArrOnPages(arr, 1, pagInfo.itemsPerPage));
   favPagination.reset(arr.length);
-  favPagination.isActive();
+  favPagination.isActive(pagInfo.itemsPerPage);
 }
 
 function showNextPage(recipes, page) {
@@ -122,6 +122,7 @@ cardsList.addEventListener('click', e => {
 });
 filterList.addEventListener('click', sortByCategory);
 
+favPagination.isActive(pagInfo.itemsPerPage);
 favPagination.on('afterMove', event => {
   const currentPage = event.page;
   showNextPage(favRecipesItems, currentPage);

@@ -44,26 +44,31 @@
   }
 }
 
-@media screen and (min-width: 768px) {
-  .main-favorite.favorite {
-    padding-top: 64px;
-  }
-
-  .no-recipes {
-    text-align: center;
-    font-size: 14px;
-    line-height: 18px;
-    margin: 0 auto;
-  }
-
-  @media screen and (min-width: 768px) {
-    .no-recipes {
-      width: 481px;
-      font-size: 16px;
-      line-height: 24px;
-    }
+@media screen and (max-width: 768px) {
+  .no-recipe-box {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 }
+
+.no-recipes {
+  text-align: center;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+}
+
+@media screen and (min-width: 768px) {
+  .no-recipes {
+    width: 481px;
+    font-size: 16px;
+    line-height: calc(24 / 16);
+    margin: 0 auto;
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

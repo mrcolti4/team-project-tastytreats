@@ -1,6 +1,7 @@
 import './js/localctorage';
 import './js/header-mobile-menu';
 import './js/favorites-main';
+import './js/favorites/norecipe';
 
 import './js/ratings';
 import './js/scheme';
