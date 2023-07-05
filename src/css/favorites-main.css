@@ -1,36 +1,28 @@
 .main-favorite.favorite {
-  overflow-x: scroll;
+  padding-top: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-favorite.favorite {
+    padding-top: 64px;
+  }
 }
 
 .category-button-wrap {
   width: 100%;
   display: flex;
-  overflow-x: auto;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
-.category-button-button {
-  padding-left: 18px;
-  padding-right: 18px;
-  border-color: rgba(5, 5, 5, 0.2);
-  line-height: calc(18 / 14);
-  color: var(--primary-text-color-03);
+.fav-cards__list {
+  margin-top: 24px;
 }
 
-.category-button-button.active {
-  background-color: var(--main-color);
-  color: var(--light-text-color);
-  border: 1px solid var(--main-color);
-  transition: all 0.3s;
-}
-
-.category-button-button:hover,
-.category-button-button:focus {
-  background-color: var(--main-color);
-}
-
-.card-set {
-  margin-top: 32px;
+@media screen and (min-width: 768px) {
+  .fav-cards__list {
+    margin-top: 32px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -40,11 +32,6 @@
   }
 }
 
-@media screen and (min-width: 1280px) {
-  .fav-set {
-    flex-basis: calc((100% - var(--ident) * (4 - 1)) / 4);
-  }
-}
 .no-recipe-icon {
   display: flex;
   justify-content: center;
@@ -58,9 +45,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .fav-set {
-    flex-basis: calc((100% - var(--ident) * (3 - 1)) / 3);
-  }
   .main-favorite.favorite {
     padding-top: 64px;
   }
@@ -79,22 +63,24 @@
       line-height: 24px;
     }
   }
-
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-  }
 }
-.category-button-wrap .fav-btn {
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.category-button-wrap .all-categories-btn {
   margin: 0;
+  padding: 14px 18px;
+  font-size: 16px;
+  line-height: calc(20 / 16);
 }
 .fav-cards__list {
   --items: 1;

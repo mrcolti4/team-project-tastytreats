@@ -17,6 +17,7 @@ const pagInfo = {
 function filterPage(arr) {
   showFavRecipes(splitArrOnPages(arr, 1, pagInfo.itemsPerPage));
   favPagination.reset(arr.length);
+  favPagination.isActive();
 }
 
 function showNextPage(recipes, page) {
@@ -35,7 +36,7 @@ function splitArrOnPages(arr, page, itemsCount) {
 function addAllCategoriesBtn() {
   filterList.insertAdjacentHTML(
     'beforeend',
-    `<button type="button" class="js-allcategories fav-btn all-categories-btn btn btn-active">
+    `<button type="button" class="js-allcategories all-categories-btn btn btn-active">
     All categories
   </button>`
   );

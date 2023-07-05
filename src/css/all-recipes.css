@@ -117,7 +117,6 @@
   display: flex;
   align-items: baseline;
   font-size: 18px;
-  gap: 4px;
 }
 
 .rating__body {
@@ -148,7 +147,7 @@
   top: 0;
   left: 0;
   color: #eea10c;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .rating__items {
