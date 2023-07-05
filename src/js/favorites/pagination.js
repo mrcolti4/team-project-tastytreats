@@ -36,10 +36,10 @@ const options = {
 const favPagination = new Pagination(pagContainer, options);
 
 // Якщо в нас меньше ніж 12 рецептів, то сховуємо пагінацію
-favPagination.isActive = function () {
+favPagination.isActive = function (itemsCount) {
   const pagContainer = this._view._containerElement;
   const totalItems = this._options.totalItems;
-  if (totalItems < 12) {
+  if (totalItems <= itemsCount) {
     pagContainer.classList.add('hidden');
   } else {
     pagContainer.classList.remove('hidden');
