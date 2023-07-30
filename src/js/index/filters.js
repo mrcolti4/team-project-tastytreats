@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { showRecipes } from './all-recipes';
+import handleQuery from '../utils/handleQuery';
 import { debounce } from 'lodash';
-import { showPagination } from './pagination';
 import { getRecipesData } from './all-recipes';
-import { MessageApi } from './service/message-api';
+import { MessageApi } from '../service/message-api';
+import { limitCount } from '../constants';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const filterRefs = {
@@ -12,21 +12,6 @@ const filterRefs = {
   areaSelect: document.querySelector('.area-select'),
   ingredientSelect: document.querySelector('.ingredients-select'),
 };
-const windowWidth = document.documentElement.clientWidth;
-
-let limitCount = 0;
-if (windowWidth < 768) {
-  limitCount = 6;
-} else if (windowWidth > 768 && windowWidth < 1280) {
-  limitCount = 8;
-} else if (windowWidth > 1280) {
-  limitCount = 9;
-}
-
-export async function handleQuery(url, params = {}) {
-  await showRecipes(`${BASE_URL}/recipes`, { ...params, limit: limitCount });
-  await showPagination(`${BASE_URL}/recipes`, { ...params, limit: limitCount });
-}
 
 export function onEmptyResult() {
   MessageApi.showError();
@@ -46,18 +31,12 @@ async function searchRecipe(e) {
     MessageApi.showTotalFound(totalPages);
   }
   if (input.value.trim() !== '') {
-    await showRecipes(`${BASE_URL}/recipes`, {
-      limit: limitCount,
-      title: input.value,
-    });
-    await showPagination(`${BASE_URL}/recipes`, {
+    handleQuery(`${BASE_URL}/recipes`, {
       limit: limitCount,
       title: input.value,
     });
     return;
   }
-
-  handleQuery();
 }
 
 async function getAreas(api) {

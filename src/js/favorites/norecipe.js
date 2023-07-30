@@ -1,5 +1,5 @@
-import localctorage from '../localctorage';
-import { KEY } from '../addToFavorites';
+import localctorage from '../utils/localctorage';
+import { KEY } from '../constants';
 
 const noRecipeBox = document.querySelector('.no-recipe-box');
 const heroFavorite = document.querySelector('.js-hero-favorite');

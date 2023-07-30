@@ -1,63 +1,76 @@
-import localctorage from './localctorage';
-import axios from 'axios';
+import localctorage from './utils/localctorage';
+import { fetchSingleRecipe } from './API_requests/fetchSingleRecipe';
 import { omit } from 'lodash';
+import { KEY } from './constants';
+import { addToFavRefs } from './refs';
 
-const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes/';
-export const KEY = 'favCards';
-const recipeObj = {};
-let favRecipesObj = localctorage.load(KEY) || {};
+let favRecipesObj;
+loadLocalStorage(KEY);
 
-// localStorageObj = omit(localStorageObj, id);
-// localctorage.save(KEY, localStorageObj);
-export function removeFromFavorites(localStorageObj, id) {
+function loadLocalStorage(key) {
+  favRecipesObj = localctorage.load(key) || {};
+}
+
+function removeFromFavorites(localStorageObj, id) {
   favRecipesObj = omit(localStorageObj, id);
   localctorage.save(KEY, favRecipesObj);
 }
 
-export async function addToFavorites(localStorageObj = {}, id) {
-  const data = await getInfo(id);
+async function addToFavorites(localStorageObj = {}, id) {
+  const data = await fetchSingleRecipe(id);
 
   localStorageObj[id] = data;
   localctorage.save(KEY, localStorageObj);
-
-  return localStorageObj;
 }
 
-async function getInfo(id) {
-  const response = await axios.get(
-    `https://tasty-treats-backend.p.goit.global/api/recipes/${id}`
-  );
-
-  return response.data;
-}
-
-async function onBtnClick(e) {
+function onBtnClick(e) {
   const target = e.target;
-
+  loadLocalStorage(KEY);
   if (target.closest('button.cards__fav-btn')) {
     const listItem = target.closest('li.cards__item');
     const id = listItem.dataset.id;
 
     if (!favRecipesObj[id]) {
       listItem.classList.add('onFavorites');
-      // const data = await getInfo(URL, id);
-      // favRecipesObj[id] = data;
-      // localctorage.save(KEY, favRecipesObj);
       addToFavorites(favRecipesObj, id);
       return;
     }
 
     if (Object.keys(favRecipesObj).includes(id)) {
       listItem.classList.remove('onFavorites');
-      // Видалення об'єкту з улюбленних за допомогою omit
-      // favRecipesObj = omit(favRecipesObj, id);
-      // localctorage.save(KEY, favRecipesObj);
       removeFromFavorites(favRecipesObj, id);
       return;
     }
   }
 }
 
-const recipeList = document.querySelector('.cards__list');
+function toggleFavoriteRecipe(e) {
+  const target = e.target;
+  const modal = target.closest('div.js-modal-recipe');
+  const modalId = modal.dataset.id;
+  const listItem = document.querySelector(
+    `li.cards__item[data-id='${modalId}']`
+  );
 
-recipeList.addEventListener('click', onBtnClick);
+  if (Object.keys(favRecipesObj).includes(modalId)) {
+    removeFromFavorites(favRecipesObj, modalId);
+    console.log(listItem);
+    listItem.classList.remove('onFavorites');
+    addToFavRefs.addToFavoriteBtn.classList.remove('hidden');
+    addToFavRefs.removeFromFavoriteBtn.classList.add('hidden');
+  } else {
+    addToFavorites(favRecipesObj, modalId);
+
+    listItem.classList.add('onFavorites');
+    addToFavRefs.addToFavoriteBtn.classList.add('hidden');
+    addToFavRefs.removeFromFavoriteBtn.classList.remove('hidden');
+  }
+}
+
+// Add event listeners
+addToFavRefs.addToFavoriteBtn.addEventListener('click', toggleFavoriteRecipe);
+addToFavRefs.removeFromFavoriteBtn.addEventListener(
+  'click',
+  toggleFavoriteRecipe
+);
+addToFavRefs.recipeList.addEventListener('click', onBtnClick);

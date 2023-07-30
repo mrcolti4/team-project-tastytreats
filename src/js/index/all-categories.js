@@ -1,23 +1,22 @@
-import axios from 'axios';
-import { fetchCategories } from './service/API.js';
-import { handleQuery } from './filters.js';
+import { fetchCategories } from '../API_requests/fetchCategories.js';
+import handleQuery from '../utils/handleQuery.js';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
 const allCategoriesBtn = document.querySelector('.all-categories-btn');
 const allCategoriesList = document.querySelector('.all-categories-list');
 
-async function handleCategoryClick(e) {
+function handleCategoryClick(e) {
   const target = e.target;
   if (target.matches('button.all-categories-item-btn')) {
     allCategoriesBtn.classList.remove('btn-active');
-    await handleQuery(`${BASE_URL}/recipes`, { category: target.innerText });
+    handleQuery(`${BASE_URL}/recipes`, { category: target.innerText });
     return;
   }
 }
 
-async function handleAllCategoryClick(e) {
+function handleAllCategoryClick(e) {
   allCategoriesBtn.classList.add('btn-active');
-  await handleQuery(`${BASE_URL}/recipes`);
+  handleQuery(`${BASE_URL}/recipes`);
   return;
 }
 
