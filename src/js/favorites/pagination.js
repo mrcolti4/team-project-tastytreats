@@ -1,6 +1,6 @@
 import Pagination from 'tui-pagination';
-import localctorage from '../localctorage';
-import { KEY } from '../addToFavorites';
+import localctorage from '../utils/localctorage';
+import { KEY } from '../constants';
 
 const loadCards = localctorage.load(KEY) || {};
 const cardsArray = Object.values(loadCards);

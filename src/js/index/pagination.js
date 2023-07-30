@@ -1,18 +1,10 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { showRecipes, getRecipesData } from './all-recipes';
+import { limitCount } from '../constants';
 
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const container = document.getElementById('tui-pagination-container');
-const windowWidth = document.documentElement.clientWidth;
-let limitCount = 0;
-if (windowWidth < 768) {
-  limitCount = 6;
-} else if (windowWidth > 768 && windowWidth < 1280) {
-  limitCount = 8;
-} else if (windowWidth > 1280) {
-  limitCount = 9;
-}
 
 async function createPagination(url, params) {
   const { perPage, totalPages } = await getRecipesData(url, params);

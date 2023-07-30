@@ -1,4 +1,5 @@
 import localctorage from './localctorage';
+import { KEY } from '../constants';
 
 export default function generateMarkup({
   _id,
@@ -7,7 +8,7 @@ export default function generateMarkup({
   preview,
   rating,
 }) {
-  const favObj = localctorage.load('favCards') || {};
+  const favObj = localctorage.load(KEY) || {};
 
   return `
     <li class="cards__item items-set ${

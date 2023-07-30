@@ -1,14 +1,4 @@
-import { handleQuery } from '../../filters';
-
-const windowWidth = document.documentElement.clientWidth;
-let limitCount = 0;
-if (windowWidth < 768) {
-  limitCount = 6;
-} else if (windowWidth > 768 && windowWidth < 1280) {
-  limitCount = 8;
-} else if (windowWidth > 1280) {
-  limitCount = 9;
-}
+import handleQuery from '../../utils/handleQuery';
 
 const input = document.querySelector('.js-input');
 const clearInput = document.querySelector('.js-clear-input');

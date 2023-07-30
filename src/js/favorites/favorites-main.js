@@ -1,9 +1,9 @@
 import 'tui-pagination/dist/tui-pagination.css';
-import localctorage from './localctorage';
-import generateMarkup from './generateMarkup';
-import { finallInitPage } from './pop-up';
-import { markUpRating } from './ratings';
-import { favPagination } from './favorites/pagination';
+import localctorage from '../utils/localctorage';
+import generateMarkup from '../utils/generateMarkup';
+import { finallInitPage } from '../pop-up';
+import { markUpRating } from '../utils/markUpRating';
+import { favPagination } from './pagination';
 
 const favCards = localctorage.load('favCards') || {};
 const cardsList = document.querySelector('.cards__list');

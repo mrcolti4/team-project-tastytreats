@@ -1,28 +1,9 @@
 import { Loader } from './loader';
-import { markUpRating } from './ratings';
-import localctorage from './localctorage';
-import { KEY } from './addToFavorites';
-import { addToFavorites, removeFromFavorites } from './addToFavorites';
+import { markUpRating } from './utils/markUpRating';
+import localctorage from './utils/localctorage';
+import { KEY } from './constants';
 // Всі посилання
-let refs = {
-  closeBtn: document.querySelector('.modal-close-btn'),
-  closeVideo: document.querySelector('.tiezer-close-btn'),
-  tiezer: document.querySelector('.tiezer'),
-  trailerBox: document.querySelector('.trailer-box'),
-  btnOpenYouTube: document.querySelector('.js-btn-openYouTube'),
-  preview: document.querySelector('.recipes'),
-  video: document.querySelector('iframe'),
-  title: document.querySelector('.js-title'),
-  time: document.querySelector('.js-minute'),
-  modalRecipe: document.querySelector('.js-modal-recipe'),
-  backdropRecipe: document.querySelector('.js-backdrop-recipe'),
-  ratingBox: document.querySelector('.js-rating-recipe-wraper'),
-  IngredientBox: document.querySelector('.recipes-list'),
-  hashtagsBox: document.querySelector('.hashtags-list'),
-  textContentBox: document.querySelector('.cooking-recipes'),
-  addToFavoriteBtn: document.querySelector('.js-addToFavorite-btn'),
-  removeFromFavoriteBtn: document.querySelector('.js-removeFromFavorite-btn'),
-};
+import { popUpRefs } from './refs';
 
 let recipeId;
 // Запуск по кліку
@@ -31,23 +12,23 @@ let recipeId;
 // }, 2000)
 
 // /** Відкриття та закриття модального вікна */
-refs.closeBtn.addEventListener('click', closeModalClose);
-refs.backdropRecipe.addEventListener('click', clickBackdropClick);
+popUpRefs.closeBtn.addEventListener('click', closeModalClose);
+popUpRefs.backdropRecipe.addEventListener('click', clickBackdropClick);
 function openModalOpen() {
   // Loader.Start();
   setTimeout(() => {
     window.addEventListener('keydown', onEscPress);
     document.body.classList.add('overflowHidden');
-    refs.backdropRecipe.classList.add('active');
-    refs.modalRecipe.classList.add('active');
+    popUpRefs.backdropRecipe.classList.add('active');
+    popUpRefs.modalRecipe.classList.add('active');
     // Loader.Stop();
   }, 50);
 }
 function closeModalClose() {
   window.removeEventListener('keydown', onEscPress);
   document.body.classList.remove('overflowHidden');
-  refs.backdropRecipe.classList.remove('active');
-  refs.modalRecipe.classList.remove('active');
+  popUpRefs.backdropRecipe.classList.remove('active');
+  popUpRefs.modalRecipe.classList.remove('active');
 }
 function clickBackdropClick(e) {
   if (e.currentTarget === e.target) {
@@ -59,6 +40,10 @@ function onEscPress(e) {
   if (e.code === 'Escape') {
     closeModalClose();
   }
+}
+
+function addIdToModal(id) {
+  popUpRefs.modalRecipe.dataset.id = id;
 }
 // /** Кінець Відкриття та закриття модального вікна */
 
@@ -72,7 +57,7 @@ export function finallInitPage(id) {
     renderHashtags(data);
     renderText(data);
     openModalOpen();
-    recipeId = data._id;
+    addIdToModal(data._id);
   });
 }
 
@@ -85,11 +70,11 @@ async function fetchRecipeById(id) {
 }
 
 // YouTUBE module
-refs.closeVideo.addEventListener('click', stopVideos);
-refs.btnOpenYouTube.addEventListener('click', openPlayer);
+popUpRefs.closeVideo.addEventListener('click', stopVideos);
+popUpRefs.btnOpenYouTube.addEventListener('click', openPlayer);
 
 function stopVideos() {
-  refs.trailerBox.classList.remove('active');
+  popUpRefs.trailerBox.classList.remove('active');
 
   document.querySelectorAll('iframe').forEach(video => {
     video.src = video.src;
@@ -99,7 +84,7 @@ function stopVideos() {
   });
 }
 function openPlayer() {
-  refs.trailerBox.classList.add('active');
+  popUpRefs.trailerBox.classList.add('active');
 }
 // end YouTUBE module
 
@@ -125,7 +110,7 @@ allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; p
 allowfullscreen
   ></iframe >
 `;
-  refs.tiezer.innerHTML = markUp;
+  popUpRefs.tiezer.innerHTML = markUp;
 }
 function renderRanting(data) {
   let markupR = `
@@ -167,7 +152,7 @@ function renderRanting(data) {
             </div>
           </div>
         </div>`;
-  refs.ratingBox.innerHTML = markupR;
+  popUpRefs.ratingBox.innerHTML = markupR;
 }
 function renderIngridient(data) {
   const markup = data.ingredients
@@ -179,7 +164,7 @@ function renderIngridient(data) {
     })
     .join('');
 
-  refs.IngredientBox.innerHTML = markup;
+  popUpRefs.IngredientBox.innerHTML = markup;
 }
 function renderHashtags(data) {
   if (data.tags.length === 0) {
@@ -191,48 +176,23 @@ function renderHashtags(data) {
     })
     .join('');
 
-  refs.hashtagsBox.innerHTML = markup;
+  popUpRefs.hashtagsBox.innerHTML = markup;
 }
 function renderText(data) {
-  refs.preview.src = data.preview;
-  refs.title.textContent = data.title;
-  refs.textContentBox.textContent = data.instructions;
-  refs.time.textContent = data.time + ' min';
+  popUpRefs.preview.src = data.preview;
+  popUpRefs.title.textContent = data.title;
+  popUpRefs.textContentBox.textContent = data.instructions;
+  popUpRefs.time.textContent = data.time + ' min';
 }
 
-// Реалізцація кнопок додавання та видалення з блоку favorites
-refs.addToFavoriteBtn.addEventListener('click', onAddToFavClick);
-refs.removeFromFavoriteBtn.addEventListener('click', onRemoveFromFavClick);
-
-function onAddToFavClick(e) {
-  const listItem = document.querySelector(`li[data-id='${recipeId}']`);
-
-  addToFavorites(localctorage.load(KEY), recipeId);
-
-  listItem.classList.add('onFavorites');
-  refs.addToFavoriteBtn.classList.add('hidden');
-  refs.removeFromFavoriteBtn.classList.remove('hidden');
-}
-
-function onRemoveFromFavClick(e) {
-  const listItem = document.querySelector(
-    `li.cards__item[data-id='${recipeId}']`
-  );
-
-  removeFromFavorites(localctorage.load(KEY), recipeId);
-
-  listItem.classList.remove('onFavorites');
-  refs.addToFavoriteBtn.classList.remove('hidden');
-  refs.removeFromFavoriteBtn.classList.add('hidden');
-}
-
+// Додавання кнопки відповідно від того чи додана вона до улюблених
 function isFavorite(id) {
   const favCards = localctorage.load(KEY) || {};
   if (Object.keys(favCards).includes(id)) {
-    refs.removeFromFavoriteBtn.classList.remove('hidden');
-    refs.addToFavoriteBtn.classList.add('hidden');
+    popUpRefs.removeFromFavoriteBtn.classList.remove('hidden');
+    popUpRefs.addToFavoriteBtn.classList.add('hidden');
     return;
   }
-  refs.removeFromFavoriteBtn.classList.add('hidden');
-  refs.addToFavoriteBtn.classList.remove('hidden');
+  popUpRefs.removeFromFavoriteBtn.classList.add('hidden');
+  popUpRefs.addToFavoriteBtn.classList.remove('hidden');
 }
