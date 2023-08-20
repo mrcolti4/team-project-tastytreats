@@ -1,13 +1,12 @@
-import localctorage from '../utils/localctorage';
+import { noRecipeRefs } from '../refs';
 import { KEY } from '../constants';
+import { getLocalFavRecipes } from '../utils/getLocalFavoriteRecipes';
 
-const noRecipeBox = document.querySelector('.no-recipe-box');
-const heroFavorite = document.querySelector('.js-hero-favorite');
-const favRecipesObj = localctorage.load(KEY) || {};
-
-if (!Object.values(favRecipesObj).length) {
-  noRecipeBox.classList.remove('visually-hidden');
-  if (window.innerWidth < 768) {
-    heroFavorite.classList.add('visually-hidden');
+export function showNoRecipeBox() {
+  if (!getLocalFavRecipes(KEY).length) {
+    noRecipeRefs.noRecipeBox.classList.remove('visually-hidden');
+    if (window.innerWidth < 768) {
+      noRecipeRefs.heroFavorite.classList.add('visually-hidden');
+    }
   }
 }

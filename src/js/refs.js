@@ -23,3 +23,20 @@ export const popUpRefs = {
   addToFavoriteBtn: document.querySelector('.js-addToFavorite-btn'),
   removeFromFavoriteBtn: document.querySelector('.js-removeFromFavorite-btn'),
 };
+
+export const filterRefs = {
+  searchInput: document.querySelector('.input-form'),
+  timeSelect: document.querySelector('.time-select'),
+  areaSelect: document.querySelector('.area-select'),
+  ingredientSelect: document.querySelector('.ingredients-select'),
+};
+
+export const favoriteRefs = {
+  cardsList: document.querySelector('.cards__list'),
+  filterList: document.querySelector('.category-button-wrap'),
+};
+
+export const noRecipeRefs = {
+  noRecipeBox: document.querySelector('.no-recipe-box'),
+  heroFavorite: document.querySelector('.js-hero-favorite'),
+};

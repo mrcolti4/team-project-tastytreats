@@ -1,7 +1,6 @@
 import { getAllRecipes } from '../API_requests/getAllRecipes';
 import { markUpRating } from '../utils/markUpRating';
 import { finallInitPage } from '../pop-up';
-import { onEmptyResult } from './filters';
 import { MessageApi } from '../service/message-api';
 import generateMarkup from '../utils/generateMarkup';
 import { limitCount } from '../constants';
@@ -9,19 +8,15 @@ import { limitCount } from '../constants';
 const URL = 'https://tasty-treats-backend.p.goit.global/api/recipes';
 const recipeList = document.querySelector('.cards__list');
 
-export async function getRecipesData(url = URL, params) {
-  const { perPage, totalPages } = await getAllRecipes(url, params);
-
-  return { perPage, totalPages };
-}
-
 function clearRecipeList() {
   recipeList.innerHTML = '';
 }
 
 async function createRecipeList(url, params = {}) {
   try {
-    const { results } = await getAllRecipes(url, params);
+    const {
+      data: { results },
+    } = await getAllRecipes(url, params);
     return results.reduce(
       (markup, currentRecipe) => markup + generateMarkup(currentRecipe),
       ''
