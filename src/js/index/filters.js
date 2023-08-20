@@ -1,17 +1,12 @@
 import axios from 'axios';
 import handleQuery from '../utils/handleQuery';
 import { debounce } from 'lodash';
-import { getRecipesData } from './all-recipes';
 import { MessageApi } from '../service/message-api';
 import { limitCount } from '../constants';
+import { getAllRecipes } from '../API_requests/getAllRecipes';
+import { filterRefs } from '../refs';
 
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api';
-const filterRefs = {
-  searchInput: document.querySelector('.input-form'),
-  timeSelect: document.querySelector('.time-select'),
-  areaSelect: document.querySelector('.area-select'),
-  ingredientSelect: document.querySelector('.ingredients-select'),
-};
 
 export function onEmptyResult() {
   MessageApi.showError();
@@ -19,7 +14,9 @@ export function onEmptyResult() {
 
 async function searchRecipe(e) {
   const input = e.target;
-  const { perPage, totalPages } = await getRecipesData(`${BASE_URL}/recipes`, {
+  const {
+    data: { totalPages },
+  } = await getAllRecipes(`${BASE_URL}/recipes`, {
     limit: limitCount,
     title: input.value,
   });

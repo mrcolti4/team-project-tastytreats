@@ -1,8 +1,11 @@
+import { omit } from 'lodash';
+
 import localctorage from './utils/localctorage';
 import { fetchSingleRecipe } from './API_requests/fetchSingleRecipe';
-import { omit } from 'lodash';
 import { KEY } from './constants';
 import { addToFavRefs } from './refs';
+import { drawAllComponents } from './favorites/drawAllComponents';
+import { getLocalFavRecipes } from './utils/getLocalFavoriteRecipes';
 
 let favRecipesObj;
 loadLocalStorage(KEY);
@@ -14,6 +17,8 @@ function loadLocalStorage(key) {
 function removeFromFavorites(localStorageObj, id) {
   favRecipesObj = omit(localStorageObj, id);
   localctorage.save(KEY, favRecipesObj);
+  if (document.body.classList.contains('favorite'))
+    drawAllComponents(getLocalFavRecipes(KEY));
 }
 
 async function addToFavorites(localStorageObj = {}, id) {
@@ -44,26 +49,24 @@ function onBtnClick(e) {
   }
 }
 
-function toggleFavoriteRecipe(e) {
-  const target = e.target;
-  const modal = target.closest('div.js-modal-recipe');
-  const modalId = modal.dataset.id;
+function toggleFavoriteRecipe({ target }) {
+  const modalId = target.closest('div.js-modal-recipe').dataset.id;
   const listItem = document.querySelector(
     `li.cards__item[data-id='${modalId}']`
   );
 
   if (Object.keys(favRecipesObj).includes(modalId)) {
-    removeFromFavorites(favRecipesObj, modalId);
-    console.log(listItem);
     listItem.classList.remove('onFavorites');
     addToFavRefs.addToFavoriteBtn.classList.remove('hidden');
     addToFavRefs.removeFromFavoriteBtn.classList.add('hidden');
-  } else {
-    addToFavorites(favRecipesObj, modalId);
 
+    removeFromFavorites(favRecipesObj, modalId);
+  } else {
     listItem.classList.add('onFavorites');
     addToFavRefs.addToFavoriteBtn.classList.add('hidden');
     addToFavRefs.removeFromFavoriteBtn.classList.remove('hidden');
+
+    addToFavorites(favRecipesObj, modalId);
   }
 }
 

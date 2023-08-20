@@ -22,5 +22,5 @@ export async function getAllRecipes(url, params = {}) {
     },
   });
 
-  return response.data;
+  return response;
 }

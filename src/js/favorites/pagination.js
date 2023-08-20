@@ -1,6 +1,7 @@
 import Pagination from 'tui-pagination';
 import localctorage from '../utils/localctorage';
 import { KEY } from '../constants';
+import { showFavRecipes } from './showFavRecipes';
 
 const loadCards = localctorage.load(KEY) || {};
 const cardsArray = Object.values(loadCards);
@@ -45,5 +46,24 @@ favPagination.isActive = function (itemsCount) {
     pagContainer.classList.remove('hidden');
   }
 };
+
+export function filterPaginationPage(arr) {
+  showFavRecipes(splitArrOnPages(arr, 1, pagInfo.itemsPerPage));
+  favPagination.reset(arr.length);
+  favPagination.isActive(pagInfo.itemsPerPage);
+}
+
+export function showNextPage(recipes, page) {
+  const data = splitArrOnPages(recipes, page, pagInfo.itemsPerPage);
+  showFavRecipes(data);
+}
+
+export function splitArrOnPages(arr, page, itemsCount) {
+  const start = (page - 1) * itemsCount; // page = 1 => 0
+  const end = start + itemsCount; // 12
+
+  const trimmedData = arr.slice(start, end);
+  return trimmedData;
+}
 
 export { favPagination };
